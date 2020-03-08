@@ -292,19 +292,29 @@
 \begin{multicols}{2}
 	Genug der Vorrede.
 	Auf zum ersten richtigen Programm!
-	Unter \ToDo{URL} gibt es eine Web-Seite mit zwei Feldern.
+	Unter \verb|https://itmm.github.io/yoshi/| gibt es eine Web-Seite
+	mit zwei Feldern.
 	In das eine Feld kann das Programm eingegeben werden.
-	Das Programm besteht aus Mal-Anweisungen
-	Nach Klick auf den „GO“-Button werden die Anweisungen ausgeführt.
+	Das Programm besteht aus Mal-Anweisungen.
+\end{multicols}
+
+\begin{center}
+	\fbox{\includegraphics[scale=.8]{yoshi-3.pdf}}
+\end{center}
+
+\begin{multicols}{2}
+	Nach Klick auf den „Start“-Knopf werden die Anweisungen ausgeführt.
+	Das Ergebnis erscheint im anderen Feld.
 
 	Sehen wir uns das Programm genauer an:
 
 	\begin{Verbatim}
-(vorwärts 10)
-(drehe 60)
-(vorwärts 10)
-(drehe 60)
-(vorwärts 10)
+(markiere 10)
+(drehe 120)
+(markiere 10)
+(drehe 120)
+(markiere 10)
+(drehe 120)
 	\end{Verbatim}
 
 	Jede Zeile ist eine eigene Anweisung.
@@ -314,11 +324,11 @@
 	Die Anweisungen richten sich an eine unsichtbare Schildkröte, die
 	in der Mitte des zweiten Feldes sitzt und nach oben sieht.
 
-	Die erste Anweisung \verb|(vorwärts 10)| fordert die Schildkröte auf,
+	Die erste Anweisung \verb|(markiere 10)| fordert die Schildkröte auf,
 	10 Schritte in die aktuelle Richtung zu laufen.
 	Dabei hinterläßt sie eine schwarze Linie.
 
-	Die nächste Anweisung \verb|(drehe 60)| dreht die Schildkröte um
+	Die nächste Anweisung \verb|(drehe 120)| dreht die Schildkröte um
 	$60$ Grad im Uhrzeigersinn. Sie blickt nun nach rechts/unten.
 \end{multicols}
 \end{document}
