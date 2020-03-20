@@ -8,7 +8,7 @@
 Das Gewölbe ist düster.
 Grauer Rauch steigt langsam wabernd aus großen, bronzenen Schalen
 auf.
-Von unsichtbaren LED-Strahlern wird er lila angestrahlt und
+Von verborgenen LED-Strahlern wird er lila angestrahlt und
 mystifiziert die gesamte Szene.
 Leise klirren indische Klang-Schalen kreuz und quer, ohne sich
 verorten zu lassen.
@@ -109,7 +109,7 @@ Aber das sind vorerst nur Details.
 Wichtig ist: Wir müssen Programme schreiben.
 
 *Programme* selbst sind Anweisungen, die so klar und haarklein
-umrissen sind, dass selbst ein Computer sie ausführen kann.
+umrissen sind, dass selbst eine Maschine sie ausführen kann.
 Es gibt unterschiedliche *Programmiersprachen*, in denen
 Programme formuliert werden können.
 
@@ -273,8 +273,12 @@ Jede Zeile ist eine eigene Anweisung.
 Jede Anweisung beginnt mit `(` und endet mit
 `)`.
 
-Die Anweisungen richten sich an eine unsichtbare Schildkröte, die
+Die Anweisungen richten sich an Yoshi aus der Mario-Welt, der
 in der Mitte des zweiten Feldes sitzt und nach oben sieht.
+Seine Aufgabe ist es, Fahrbahnmarkierungen zu zeichnen.
+Aber wie ein guter Angestellter, muss ihm ganz genau gesagt werden,
+was er zeichnen muss.
+Aus lizenz-rechtlichen Gründen wird Yoshi selber nicht gezeichnet.
 
 Die erste Anweisung `(markiere 10)` fordert die Schildkröte auf,
 10 Schritte in die aktuelle Richtung zu laufen.
