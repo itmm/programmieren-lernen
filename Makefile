@@ -21,4 +21,4 @@ all: $(OUTPUTs)
 	pdflatex $^
 
 clean:
-	rm -f *.aux *.log $(OUTPUTs)
+	rm -f *.tex *.aux *.log $(OUTPUTs)

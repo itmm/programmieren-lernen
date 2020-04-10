@@ -260,7 +260,7 @@ Das Ergebnis erscheint im anderen Feld.
 
 Sehen wir uns das Programm genauer an:
 
-```
+```lisp
 (markiere 10)
 (drehe 120)
 (markiere 10)
@@ -285,4 +285,4 @@ Die erste Anweisung `(markiere 10)` fordert die Schildkröte auf,
 Dabei hinterläßt sie eine schwarze Linie.
 
 Die nächste Anweisung `(drehe 120)` dreht die Schildkröte um
-`60` Grad im Uhrzeigersinn. Sie blickt nun nach rechts/unten.
+`120` Grad im Uhrzeigersinn. Sie blickt nun nach rechts/unten.
