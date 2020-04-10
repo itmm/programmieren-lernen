@@ -1,11 +1,12 @@
 .PHONY: all clean
 
 SOURCEs := $(wildcard *.md)
-OUTPUTs := $(SOURCEs:.md=.pdf)
+PLAIN_OUTPUTs := $(SOURCEs:.md=.pdf)
 LIGHT_OUTPUTs := $(SOURCEs:.md=-light.pdf)
 DARK_OUTPUTs := $(SOURCEs:.md=-dark.pdf)
+OUTPUTs := $(PLAIN_OUTPUTs) $(LIGHT_OUTPUTs) $(DARK_OUTPUTs)
 
-all: $(OUTPUTs) $(LIGHT_OUTPUTs) $(DARK_OUTPUTs)
+all: $(OUTPUTs)
 
 %.tex: %.md
 	../dox/dox < $^ > $@
@@ -20,4 +21,4 @@ all: $(OUTPUTs) $(LIGHT_OUTPUTs) $(DARK_OUTPUTs)
 	pdflatex $^
 
 clean:
-	rm -f *.aux *.log
+	rm -f *.aux *.log $(OUTPUTs)

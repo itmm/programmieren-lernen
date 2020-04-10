@@ -90,14 +90,14 @@ Lass uns das Spiel beginnen!
 
 ## Um was geht es?
 
-### Definitionen
-
 Es ist total wichtig, dass wir ganz klar Wissen, um was es überhaupt
 geht.
 Wenn wir kein gemeinsames Verständnis der verwendeten Begriffe haben,
 dann ist es höchstens Glück, wenn Wissen und Erkenntnis transportiert
 werden.
 Das kann funktionieren. Muss es aber nicht.
+
+### Definitionen
 
 Zuerst geht es um unsere eigene Rolle.
 Der *Programmierer* oder die *Programmiererin* erstellen
