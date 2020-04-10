@@ -138,10 +138,10 @@ Zur Ehre des großen Pionier-Geists von Henry Ford und der Besinnung
 als Teil einer Auto-Nation, habe ich ein etwas vereinfachtes
 Programm geschrieben, wie ein Auto in einer Fabrik gebaut wird:
 
-1. Nehme vier Reifen *r*<sub>1</sub>,…,*r*<sub>4</sub>.
-2. Nehme ein Lenkrad *rr*.
+1. Nehme vier Reifen $r_1,\ldots,r_4$.
+2. Nehme ein Lenkrad $rr$.
 3. Baue in wenigen, nicht näher beschriebenen Schritten aus
-   *r*<sub>1</sub>,…,*r*<sub>4</sub>,*rr* mit zusätzlichem Material einen roten VW Polo.
+   $r_1,\ldots,r_4,rr$ mit zusätzlichem Material einen roten VW Polo.
 
 Natürlich war die eigentliche Liste in Wolfsburg etwas länger.
 Aber die würde den Rahmen sprengen und rechtliche Streitigkeiten
