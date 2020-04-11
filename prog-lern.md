@@ -237,7 +237,7 @@ Unser Begriff des Programms ist allgemein genug, um Rezepte mit zu
 umfassen.
 Am Beispiel des Rezeptes können auch wieder schön die einzelnen
 Komponenten unterschieden werden.
-Ein Rezept macht noch keinen Eierpfannenkuchen.
+Ein Rezept macht noch keinen Eierpfannkuchen.
 Dazu benötigt man noch eine ausführende Maschine (den Koch) und
 die notwendigen Zutaten (Eier, Mehl) und Betriebsmittel
 (Herd, Pfanne).
@@ -253,36 +253,315 @@ mit zwei Feldern.
 In das eine Feld kann das Programm eingegeben werden.
 Das Programm besteht aus Mal-Anweisungen.
 
-!(yoshi-3.pdf)
+Die Anweisungen richten sich an die Schildkröte Yoshi aus der Mario-Welt,
+die in der Mitte des zweiten Feldes sitzt und nach oben sieht.
+Ihre Aufgabe ist es, Fahrbahnmarkierungen auf eine neue Straße zu
+zeichnen.
+Aber ihr muss ganz genau gesagt werden, was sie zeichnen muss.
+Aus lizenz-rechtlichen Gründen wird Yoshi selber nicht gezeichnet.
 
-Nach Klick auf den „Start“-Knopf werden die Anweisungen ausgeführt.
-Das Ergebnis erscheint im anderen Feld.
+Nach Klick auf den „Auftrag ausführen“-Knopf werden die Anweisungen
+ausgeführt.
+Das Ergebnis erscheint im anderen Feld:
+
+!(yoshi-3.pdf)
 
 Sehen wir uns das Programm genauer an:
 
 ```lisp
-(markiere 10)
+(markiere 20)
 (drehe 120)
-(markiere 10)
+(markiere 20)
 (drehe 120)
-(markiere 10)
+(markiere 20)
 (drehe 120)
 ```
 
 Jede Zeile ist eine eigene Anweisung.
-Jede Anweisung beginnt mit `(` und endet mit
-`)`.
+Jede Anweisung beginnt mit `(` und endet mit `)`.
 
-Die Anweisungen richten sich an Yoshi aus der Mario-Welt, der
-in der Mitte des zweiten Feldes sitzt und nach oben sieht.
-Seine Aufgabe ist es, Fahrbahnmarkierungen zu zeichnen.
-Aber wie ein guter Angestellter, muss ihm ganz genau gesagt werden,
-was er zeichnen muss.
-Aus lizenz-rechtlichen Gründen wird Yoshi selber nicht gezeichnet.
+Das erste Wort in der Anweisung ist der *Name* der Anweisung.
+Er sagt Yoshi, was für eine Aktion er ausführen soll.
+Im ersten Programm gibt es nur die Namen `markiere` und `drehe`.
 
-Die erste Anweisung `(markiere 10)` fordert die Schildkröte auf,
-10 Schritte in die aktuelle Richtung zu laufen.
-Dabei hinterläßt sie eine schwarze Linie.
+Die erste Anweisung `(markiere 20)` fordert die Schildkröte auf,
+zwanzig Schritte in die aktuelle Richtung zu laufen.
+Dabei hinterläßt sie eine Linie.
 
 Die nächste Anweisung `(drehe 120)` dreht die Schildkröte um
-`120` Grad im Uhrzeigersinn. Sie blickt nun nach rechts/unten.
+`120` Grad (eine Drittel-Drehung) im Uhrzeigersinn.
+Sie blickt nun nach rechts/unten.
+Die nächste Linie fährt also in einem spitzen Winkel in diese Richtung.
+
+Nach insgesamt drei Markierungen und Drehungen steht Yoshi wieder
+auf seinem Startpunkt und blickt wieder nach oben.
+Zusätzlich hat sie aber ein Dreieck gezeichnet.
+
+### Ein Quadrat zeichnen
+
+Wie sieht nun ein Programm aus, dass Yoshi dazu bringt ein Quadrat zu
+zeichnen?
+
+Anstatt drei Linien müssen vier Linien gezogen werden.
+Und anstatt von Drittel-Drehungen müssen Viertel-Drehungen ausgeführt
+werden.
+
+Das Programm kann wie folgt aussehen:
+
+
+```lisp
+(markiere 20)
+(drehe 90)
+(markiere 20)
+(drehe 90)
+(markiere 20)
+(drehe 90)
+(markiere 20)
+(drehe 90)
+```
+
+Es liefert das folgende Ergebnis:
+
+!(yoshi-4.pdf)
+
+### Erste Erkenntnisse
+
+Jetzt haben wir schon zwei Programme geschrieben:
+Mit dem ersten malt Yoshi ein Dreieck.
+Mit dem zweiten malt die Schildkröte ein Quadrat.
+Schon beim Quadrat fällt auf, wie mühevoll es ist, Yoshi geometrische
+Formen zu erklären.
+Zwar kann man mit etwas probieren Programme schreiben, die nun auch
+Vierecke, Fünfecke und so weiter schreiben.
+Aber für die Errechnung der Winkel wird irgendwann ein Taschenrechner
+notwendig.
+Und komfortabel ist die Eingabe auch nicht.
+
+Ich gebe zu, ich habe beim Ausprobieren nur die ersten zwei Zeilen
+angepasst, diese kopiert und dann weitere Male eingefügt.
+Die restlichen Zeilen des alten Programms habe ich gelöscht.
+Wenn Programmiersprachen keine Wiederholungen unterstützen, ist das
+leider das Einzige, was bleibt.
+
+Das hat gravierende Nachteile:
+Wenn man später etwas verändern will, müssen viele Zeilen angepasst
+werden.
+Wenn man ein paar vergißt, funktioniert das Programm vielleicht nicht
+mehr richtig.
+Bereits bei der Umschreibung vom Dreiecks-Programm zum Quadrat-Programm
+kann man dies beobachten.
+
+Man sollte meinen, dass es in den letzten Jahren genug Fortschritte
+gegeben hat, um uns diese Mühsal zu ersparen.
+Leider weit gefehlt: das Kopieren und wiederholte Einfügen ist zum
+Beispiel bei Tabellenkalkulationen immer noch der Weg der Wahl.
+
+Zum Glück ist Yoshi cleverer.
+
+### Wiederholen
+
+Das Programm zum Zeichnen eines Quadrats kann man auch so aufschreiben:
+
+```lisp
+(wiederhole 4
+	(markiere 20)
+	(drehe 90)
+)
+```
+
+Das ist viel weniger zum Tippen, aber bringt das gleiche Resultat.
+Programmierer sind faul: warum arbeiten, wenn der Rechner auch die
+Arbeit für einen erledigen kann. Oftmals ist der Computer dabei
+gründlicher und macht weniger Fehler.
+
+Aber erst einmal soll geklärt werden, was das Programm überhaupt macht,
+bzw. wieso es funktioniert.
+
+Der erste Befehl heißt `wiederhole` und hat drei Argumente.
+Ja, genau: $3$.
+Das erste Argument ist eine Zahl.
+Die beiden weiteren Argumente sind wieder Befehle!
+
+Der `wiederhole` Befehl nimmt das erste Argument und führt die weiteren
+Argumente so oft aus, wie in dem ersten Argument angegeben wurde.
+
+Oder noch genauer: solange das erste Argument größer als $0$ ist,
+werden die weiteren Befehle ausgeführt und danach das erste Argument um
+$1$ reduziert.
+Anstatt $4$ könnte man im Programm auch $3.2$ schreiben.
+Wichtig ist, dass Dezimalzahlen wie im Englischen mit einem
+Dezimal-Punkt anstatt des deutschen Dezimal-Kommas geschrieben werden
+müssen.
+Aber grundsätzlich kann jede Zahl als erstes Argument von `wiederhole`
+verwendet werden.
+
+Bleibt nur das lästige Problem mit der Winkel-Berechnung.
+
+### Winkel berechnen
+
+Das können wir zum Glück auch dem Rechner überlassen.
+
+Yoshi soll nach dem Ausführen in die gleiche Richtung blicken.
+Also muss er sich um `360` Grad (oder ein Vielfaches davon) drehen.
+
+Beim Quadrat muss er sich also um $360/4=90$ Grad drehen, da ein
+Quadrat vier Seiten hat.
+
+Beim Dreieck muss er sich um $360/3=120$ Grad drehen.
+
+Die Berechnung kann auch Yoshi ausführen.
+Aber auf eine etwas komische Art.
+Es gibt einen Befehl, der eine Zahl durch eine andere teilt.
+Wie in der obigen Formel heißt dieser Befehl `/`.
+
+Aber der Befehl muss ja immer als erstes Element der Liste stehen.
+Um also $360/4$ zu berechnen, lautet der Befehl `(/ 360 4)`.
+Diesen können wir das Quadrat-Programm einsetzen:
+
+
+```lisp
+(wiederhole 4
+	(markiere 20)
+	(drehe (/ 360 4))
+)
+```
+
+### Geschachtelte Befehle
+
+Die Befehle `wiederhole` und `drehe` gehen mit ihren Argumenten
+unterschiedlich um.
+
+Beim Befehl `drehe` (und auch bei vielen anderen Befehlen) kann man
+annehmen, dass geschachtelte Befehle ausgeführt werden, *bevor* der
+eigentliche Befehl ausgeführt wird.
+
+Der Befehl `drehe` sieht also keine Division als Argument, sondern
+nur das Ergebnis: die Zahl $90$.
+So funktioniert es bei fast allen Befehlen, bis auf ein paar Ausnahmen.
+Zu diesen *Spezial-Formen* gehört auch `wiederhole`.
+
+`wiederhole` sieht die übergebenen Befehle und führt sie so oft aus,
+wie nötig ist.
+
+Woran kann man Befehle von Spezial-Formen unterscheiden?
+Leider gibt es keine klare Regel.
+Wenn ein Befehl nicht als Spezial-Form benannt wird, dann wird es sich
+hoffentlich um einen normalen Befehl handeln.
+
+### Fünfeck und Pentagramm
+
+Wenn nun ein Fünfeck gezeichnet werden soll, müssen nur noch die beiden
+`4` durch `5` ersetzt werden.
+Zusätzlich wird die Länge `20` etwas reduziert.
+Sonst passt das Fünfeck nicht mehr in das Feld.
+
+Das resultierende Programm sieht so aus:
+
+```lisp
+(wiederhole 5
+	(markiere 15)
+	(drehe (/ 360 5))
+)
+```
+
+Das Programm liefert das folgende Ergebnis:
+
+!(yoshi-5.pdf)
+
+Vorher habe ich geschrieben, dass sich Yoshi auch um ein Vielfaches von
+$\ang{360}$ drehen kann.
+Probieren wir das aus, indem sich Yoshi zweimal um $\ang{360}$ dreht.
+
+Angenommen, wir wissen nicht, dass $2\cdot 360=720$ ist.
+Dann können wir auch Yoshi wieder mit der Aufgabe betrauen.
+
+Hier ist das neue Programm:
+
+```lisp
+(wiederhole 5
+	(markiere 20)
+	(drehe (/ (* 2 360) 5))
+)
+```
+
+Als Ergebnis erhalten wir ein Pentagram:
+
+!(yoshi-penta.pdf)
+
+### Aufgabe 1: Modernes Dreieck
+
+Wie kann das ursprüngliche Programm
+
+```lisp
+(markiere 20)
+(drehe 120)
+(markiere 20)
+(drehe 120)
+(markiere 20)
+(drehe 120)
+```
+
+mit `wiederholung` und Division vereinfacht werden?
+
+### Aufgabe 2: Innenwinkel
+
+Der *Innenwinkel* bei einem gleichseitigen Dreieck beträgt $\ang{60}$,
+nicht $\ang{120}$.
+Auch das folgende Programm zeichnet ein Dreieck, dreht sich aber nur um
+$\ang{60}$.
+
+```lisp
+(markiere -20)
+(drehe 60)
+(markiere 20)
+(drehe 60)
+(markiere -20)
+(drehe 60)
+```
+
+1. Wie unterscheiden sich die gezeichneten Dreiecke? 
+2. Welche Nachteile hat das Programm (z.B. Möglichkeiten der
+   Vereinfachung, Orientierung von Yoshi am Ende)?
+
+### Aufgabe 3: Rose
+
+Welches Programm liefert das folgende Ergebnis?
+
+!(yoshi-rose.pdf)
+
+### Aufgabe 4: Kreiselei
+
+1. Was passiert, wenn sich Yoshi im Fünfeck-Programm dreimal oder viermal
+   um $\ang{360}$ dreht?
+2. Gibt es ein Muster?
+3. Wie sieht dieses Muster beim Dreieck und beim Quadrat aus?
+
+### Aufgabe 5: Rechteck
+
+Das folgende Programm zeichnet ein Rechteck:
+
+```lisp
+(markiere 20)
+(drehe 90)
+(markiere 10)
+(drehe 90)
+(markiere 20)
+(drehe 90)
+(markiere 10)
+(drehe 90)
+```
+
+1. Wie kann es mit `wiederhole` vereinfacht werden?
+2. Zeichne die Rose aus Aufgabe 3 mit einem Rechteck anstatte einem
+   Quadrat.
+
+## Sachen benennnen
+
+```lisp
+(defn (poly n l r)
+	(wiederhole n
+		(markiere l)
+		(drehe (/ (* r 360) n))
+	)
+)
+```
