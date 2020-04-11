@@ -557,11 +557,59 @@ Das folgende Programm zeichnet ein Rechteck:
 
 ## Sachen benennnen
 
+Bisher können wir schon recht komplexe Grafiken mit wenigen Zeilen Code
+zeichnen lassen.
+Die Aufgabe 4: Rose gibt ein schönes Beispiel.
+
+Jedoch gibt es bei unserem Polyeder Programm noch eine unschöne
+Wiederholung:
+
 ```lisp
-(defn (poly n l r)
-	(wiederhole n
-		(markiere l)
-		(drehe (/ (* r 360) n))
-	)
+(wiederhole 5
+	(markiere 15)
+	(drehe (/ 360 5))
 )
 ```
+
+Die Zahl `5` muss an zwei Stellen eingegeben werden.
+Einmal um anzugeben, wie viele Seiten der Polyeder haben soll.
+Und einmal um den korrekten Winkel zu berechnen.
+
+Wie sähe ein allgemeines Programm aus, um einen Polyeder zu zeichnen?
+
+Das folgende Programm definiert eine Funktion `poly` und verwendet sie
+danach wie die eingebauten Befehle `markiere`, `drehe` oder `+`:
+
+```lisp
+(def-fn poly (n)
+	(wiederhole n
+		(markiere 15)
+		(drehe (/ 360 n))
+	)
+)
+(poly 5)
+```
+
+Der Funktion wird ein Parameter `n` übergeben.
+Innerhalb des Funktionsaufrufs wird `n` dann durch den konkreten Wert
+`5` ersetzt, mit dem die Funktion aufgerufen wurde.
+
+Allgemein definiert die Spezial-Form `def-fn` eine neue Funktion.
+Der Name der Funktion ist das erste Argument.
+Eine Liste mit Argumenten der Funktion ist das zweite Argument.
+Alle weiteren Argumente werden beim Aufruf der Funktion ausgeführt.
+
+Yoshi verwendet eine *funktionale Programmiersprache*, die an die
+Programmiersprache LISP angelehnt ist.
+Daher werden Funktionen in der weiteren Betrachtung einen wichtigen Teil
+einnehmen.
+
+Auch wenn LISP schon ein paar Tage auf dem Buckel hat
+(die Sprache wurde bereits $1958$ spezifiziert),
+sind die Prinzipien heute aktueller denn je.
+Langsam fangen sie an, der objektorientierten Programmierung den Rang
+abzulaufen.
+Das zeigen zum Beispiel aktuelle Erweiterungen der Sprachen Java und
+C++, aber auch moderne Sprachen wie Haskell, Scala oder Clojure.
+
+
