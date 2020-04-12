@@ -612,4 +612,450 @@ abzulaufen.
 Das zeigen zum Beispiel aktuelle Erweiterungen der Sprachen Java und
 C++, aber auch moderne Sprachen wie Haskell, Scala oder Clojure.
 
+### Funktionsaufruf sezieren
+
+Betrachten wir Schritt für Schritt, was bei einem Methoden-Aufruf
+passiert.
+Dies sind nicht genau die gleichen Schritte, die ein Rechner durchführt,
+aber sie sind einfacher zu erkläre und führen zum gleichen Ergebnis.
+
+Nehmen wir den Aufruf `(poly 5)`.
+Man kann den Aufruf durch die Kommandos der Funktion ersetzen.
+Dabei muss das Argument `n` immer durch den Wert `5` ersetzen.
+Damit ergibt sich:
+
+```lisp
+(wiederhole 5
+	(markiere 15)
+	(drehe (/ 360 5))
+)
+```
+
+Den `wiederhole` Befehl können wir ebenfalls auseinanderrollen und
+erhalten:
+
+```lisp
+(markiere 15)
+(drehe (/ 360 5))
+(markiere 15)
+(drehe (/ 360 5))
+(markiere 15)
+(drehe (/ 360 5))
+(markiere 15)
+(drehe (/ 360 5))
+(markiere 15)
+(drehe (/ 360 5))
+```
+
+Und wenn die Division ausgeführt wurde bleibt folgendes übrig:
+
+```lisp
+(markiere 15)
+(drehe 72)
+(markiere 15)
+(drehe 72)
+(markiere 15)
+(drehe 72)
+(markiere 15)
+(drehe 72)
+(markiere 15)
+(drehe 72)
+```
+
+Diese Instruktionen führt Yoshi aus und zeichnet das Fünfeck.
+
+### Mehrere Funktions-Argumente
+
+Die Funktion `poly` hat nur ein einziges Argument: die Anzahl der Seiten
+des Polyeders.
+Aber es können auch mehrere sein.
+
+Angenommen, wir möchten uns mit der Länge einer Seite ebenfalls nicht
+festlegen.
+Es hat sich bereits gezeigt, dass der Wert $20$ nicht immer funktioniert
+und zum Beispiel manchmal durch $15$ ersetzt werden muss.
+Bei Polyedern mit noch mehr Ecken muss die Länge noch kleiner gewählt
+werden.
+
+Ein neues Programm kann so aussehen:
+
+
+```lisp
+(def-fn poly (n l)
+	(wiederhole n
+		(markiere l)
+		(drehe (/ 360 n))
+	)
+)
+(poly 5 15)
+(poly 5 10)
+(poly 5 5)
+```
+
+Es entsteht folgendes Bild:
+
+!(poly-5-3.pdf)
+
+Hier sieht man einen zweiten Vorteil der Funktion:
+Eine Funktion zu schreiben und einmal aufzurufen, sieht nach zusätzlichem
+Aufwand ohne klaren Nutzen aus.
+Aber sobald die Funktion mehrfach aufgerufen wird, reduziert sich die
+Programmgröße erheblich.
+
+Eine Funktion ist nicht nur ein Element, um Programme besser zu
+strukturieren, sondern reduziert bei richtiger Anwendung auch deren Größe
+und Komplexität.
+
+Den Aufruf `(poly 5 10)` kann man sich wieder als eine sehr kompakte
+Schreibweise von
+
+```lisp
+(wiederhole 5
+	(markiere 10)
+	(drehe (/ 360 5))
+)
+```
+
+vorstellen.
+Mit den oben beschriebenen weiteren Vereinfachungen.
+
+Doch warum bei zwei aufhören.
+Mit einem weiteren Parameter `r` können wir angeben, wie oft sich
+Yoshi um die eigene Achse drehen soll:
+
+```lisp
+(def-fn poly (n l r)
+	(wiederhole n
+		(markiere l)
+		(drehe (/ (* r 360) n))
+	)
+)
+(poly 5 15 2)
+```
+
+Mit jedem zusätzlichen Parameter wird die Funktion flexibler.
+Der Aufruf wird jedoch immer komplexer.
+Oft ist es schwierig, die richtige Anzahl an Parametern abzuwägen.
+
+Vielleicht verwenden wir fast immer nur Polyeder mit einer einfachen
+Drehung, und davon haben die meisten eine Kantenlänge von $20$.
+Aber eben nicht immer.
+
+Wir können natürlich mehrere Funktionen schreiben:
+
+```lisp
+(def-fn poly (n l r)
+	(wiederhole n
+		(markiere l)
+		(drehe (/ (* r 360) n))
+	)
+)
+(def-fn poly-1 (n l)
+	(wiederhole n
+		(markiere l)
+		(drehe (/ 360 n))
+	)
+)
+(def-fn std-poly (n)
+	(wiederhole n
+		(markiere 20)
+		(drehe (/ 360 n))
+	)
+)
+(poly 4 10 1)
+(poly-1 4 15)
+(std-poly 4)
+```
+
+Noch einfacher wird das Programm, wenn man erkennt, das die zweite und
+dritte Funktion nur ein Sonderfall der anderen ist:
+
+```lisp
+(def-fn poly (n l r)
+	(wiederhole n
+		(markiere l)
+		(drehe (/ (* r 360) n))
+	)
+)
+(def-fn poly-1 (n l)
+	(poly n l 1)
+)
+(def-fn std-poly (n)
+	(poly-1 n 20)
+)
+(poly 4 10 1)
+(poly-1 4 15)
+(std-poly 4)
+```
+
+Betrachten wir den Aufruf von `(std-poly 4)` mit der Ersetzungsregel.
+Aus dem Aufruf wird:
+
+```lisp
+(poly-1 4 20)
+```
+
+Das `n` von `poly-1` wurde durch `4` und das `l` durch `20` ersetzt.
+Die nächste Ersetzung ergibt:
+
+```lisp
+(poly 4 20 1)
+```
+
+Das `n` von `poly` wurde durch `4`, das `l` durch `20` und `r` durch
+`1` ersetzt.
+Im nächsten Schritt ergibt sich:
+
+```lisp
+(wiederhole 4
+	(markiere 20)
+	(drehe (/ (* 1 360) 4))
+)
+```
+
+Das Ersetzen der Multiplikation ergibt:
+
+```lisp
+(wiederhole 4
+	(markiere 20)
+	(drehe (/ 360 4))
+)
+```
+
+Das Ausrechnen der Division ergibt:
+
+```lisp
+(wiederhole 4
+	(markiere 20)
+	(drehe 90)
+)
+```
+
+Und mit dem Ersetzen der Wiederholung ergibt sich:
+
+```lisp
+(markiere 20)
+(drehe 90)
+(markiere 20)
+(drehe 90)
+(markiere 20)
+(drehe 90)
+(markiere 20)
+(drehe 90)
+```
+
+Nicht immer macht es Sinn, alle diese Schritte im Kopf durchzuführen.
+Aber gerade am Anfang hilft es ungemein, um zu verstehen, wie ein
+Funktionsaufruf funktioniert.
+
+### Frage: Kann eine Funktion sich auch selber aufrufen?
+
+Auf jeden Fall!
+Darin besteht die Mächtigkeit der funktionalen Programmierung.
+
+Jedoch können wir einen solchen Aufruf bisher noch nicht verwenden.
+Wir haben noch keine Möglichkeit zu beschreiben, dass eine Funktion
+sich *nicht immer* aufruft.
+
+Wenn sie sich aber immer aufruft, dann wird das Programm nie beendet.
+
+Und da im Browser erst die Grafiken neu gezeichnet werden, nachdem das
+Programm beendet wurde, macht ein solches Programm keinen Sinn.
+Es handelt sich vielmehr um einen Programmierfehler.
+
+### Sichtbarkeit von Bezeichnern
+
+Bisher sind die unterschiedlichsten Bezeichner vorgekommen.
+Ein paar Beispiele sind `markiere`, `wiederhole`, `+`, `n`.
+
+Hinter einem Bezeichner versteckte sich entweder eine Funktion (bei
+`markiere` und `+`), eine Spezial-Form (bei `wiederhole`) oder eine
+Zahl (bei `n`).
+
+Jedoch sind nicht alle Bezeichner immer gültig.
+
+Betrachten wir das Programm
+
+```lisp
+(def-fn poly (n)
+	(wiederhole n
+		(markiere 20)
+		(drehe (/ 360 n))
+	)
+)
+(poly 3)
+```
+
+Insgesamt, kommen folgende Bezeichner vor:
+
+* `def-fn`, `wiederhole` (Spezial-Form),
+* `poly`, `markiere`, `drehe` (Funktion),
+* `n` (Argument/Zahl).
+
+Bis auf `n` und `poly` können diese Bezeichner überall verwendet werden.
+
+`poly` kann nur verwendet werden, nachdem die Funktion mit `def-fn`
+definiert wurde.
+Folgendes Programm macht keinen Sinn:
+
+```lisp
+(poly 3)
+(def-fn poly (n)
+	(wiederhole n
+		(markiere 20)
+		(drehe (/ 360 n))
+	)
+)
+```
+
+Bei der Ausführung kommt eine Fehlermeldung, das die Funktion `poly`
+nicht bekannt ist.
+
+Die Verwendung von `n` ist noch eingeschränkter: es kann nur innerhalb
+der Definition der Funktion verwendet werden.
+
+Erst bei einem Funktionsaufruf bekommt `n` einen konkreten Wert
+zugewiesen (z.B. `3` bei `(poly 3)`).
+Nur dann werden die Kommandos in der Funktion abgearbeitet und nur dann
+können sie `n` verwenden.
+
+Nach dem Aufruf der Funktion ist `n` nicht mehr sichtbar und kann nicht
+mehr verwendet werden.
+
+Man kann sich das mit einem Stapel Kisten vorstellen.
+Zu Beginn gibt es nur eine Kiste.
+In der sind alle Spezial-Formen und alle globalen Funktionen abgelegt.
+
+Wenn mit `def-fn` eine neue Funktion definiert wird, dann wird diese
+Funktion in die oberste Kiste des Stapels abgelegt.
+
+Um zu einem Bezeichner den entsprechenden Wert oder die passende Funktion
+zu finden, wird in der obersten Kiste nachgesehen.
+Gibt es dort einen Treffer, so wird er zurück geliefert.
+Andernfalls wird in der darunter liegenden Kiste nachgesehen.
+Und so weiter.
+
+Bei einem Funktionsaufruf passiert nun etwas Komisches: 
+Zuerst wird für jedes Argument der Wert ermittelt.
+Dafür wird der aktuelle Stapel zu Rate gezogen.
+Dann werden viele Kisten zur Seite gestellt, bis die oberste Kiste die
+Definition der Funktion enthält.
+Darauf wird eine neue Kiste gestellt.
+In diese Kiste kommt ein Eintrag für jedes Argument, welches für den
+Argument-Namen den beim Aufruf ermittelten Wert ablegt.
+Mit diesem Stapel werden die Kommandos der Funktion abgearbeitet.
+
+Zum Ende des Funktionsaufrufs werden die neu angelegten Kisten wieder
+entfernt.
+Die oberste Kiste enthält nun wieder die Definition der Funktion.
+Die zur Seite gestellten Kisten kommen wieder oben auf den Stapel.
+Nun sieht der Stapel wieder so aus, wie beim Aufruf der Funktion.
+
+Nehmen wir das folgende Programm:
+
+```lisp
+(def-fn poly (n)
+	(wiederhole n
+		(markiere 15)
+		(drehe (/ 360 n))
+	)
+)
+(def-fn poly+1 (n)
+	(poly (+ 1 n))
+)
+(poly+1 4)
+```
+
+Die Gemeinheit besteht darin, dass `n` in zwei Funktionen als Argument
+verwendet wird.
+Und die eine Funktion die andere auch noch aufruft.
+
+Es handelt sich jedoch um unterschiedliche Werte, da sie in
+unterschiedlichen Kisten liegen.
+
+Aber unser Ersetzungs-Prinzip schafft hier Klarheit.
+Innerhalb von `poly+1` hat `n` den Wert `4`.
+Innerhalb von `poly` jedoch den Wert `5`.
+
+Betrachten wir den Aufruf `(poly+1 4)` detailliert.
+Die erste Ersetzung ergibt:
+
+```lisp
+(poly (+1 4))
+```
+
+und das wird zu `(poly 5)` aussummiert.
+Die nächste Ersetzung ergibt:
+
+```lisp
+(wiederhole 5
+	(markiere 15)
+	(drehe (/ 360 5))
+)
+```
+
+mit den üblichen Fortführungen.
+
+### Innere Funktionen
+
+Funktionen können auch in einer Funktion definiert werden.
+
+```lisp
+(def-fn poly (n)
+	(def-fn geh-dreh ()
+		(markiere 20)
+		(drehe (/ 360 n))
+	)
+	(wiederhole n
+		(geh-dreh)
+	)
+)
+(poly 3)
+```
+
+Nach dem Kisten-Prinzip ist die Funktion `geh-dreh` nur innerhalb eines
+Funktionsaufrufs von `poly` sichtbar.
+Sie kann daher im `wiederhole`-Aufruf verwendet werden.
+
+Oft können innere Funktionen verwendet werden, um neue Bezeichner
+einzuführen.
+Eine andere Definition von `poly` wäre:
+
+```lisp
+(def-fn poly (n)
+	(def-fn inner (w)
+		(wiederhole n
+			(markiere 20)
+			(drehe w)
+		)
+	)
+	(inner (/ 360 n))
+)
+(poly 3)
+```
+
+Dieses Programm ist komplizierter, als die ursprüngliche Version:
+
+```lisp
+(def-fn poly (n)
+	(wiederhole n
+		(markiere 20)
+		(drehe (/ 360 n))
+	)
+)
+(poly 3)
+```
+
+Es wird statt dessen eine neue Funktion geschrieben und diese mit
+dem berechneten Winkel aufgerufen.
+
+Diese Variante kann in manchen Situationen deutlich schneller sein.
+Anstatt dass für jede Seite neu in der `dreh`-Funktion der Winkel mit
+einer Division neu berechnet wird, muss die Division nur einmal
+durchgeführt werden.
+
+Eine Division ist noch nicht so schlimm (es sein denn, die Anzahl `n`
+der Seiten wird sehr, sehr groß), aber wenn statt dessen eine
+kompliziertere Berechnung ausgeführt wird, kann das ein echter Zeitgewinn
+werden.
 
