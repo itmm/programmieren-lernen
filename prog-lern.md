@@ -1232,7 +1232,26 @@ einmal erfolgen:
 Durch die Abstraktion der Länge in eine eigene Funktion macht es auf
 einmal Sinn, sich mit dem Wert zu befassen und ihn zu optimieren.
 
-### Funktionen als Argumente
+## Bedingungen und Listen
+
+Bisher sind die Programme immer einer klaren Schiene gefolgt.
+Es gab keine Abweichungen vom Plan und keine Umwege.
+
+Aber die daraus resultierenden Programme sind nicht sehr mächtig.
+
+```lisp
+(def-fn log (l)
+	(markiere l)
+	(drehe 50)
+	(wenn (> (abs (x-koord)) 25)
+		nil
+		(log (* l 1.2))
+	)
+)
+(log 5)
+```
+
+## Funktionen als Argumente
 
 Jetzt kommen wir zum Höhepunkt dieses Heftes.
 
@@ -1258,6 +1277,28 @@ Betrachte dazu folgendes Programm:
 	(rotate n mark)
 )
 (poly 3)
+```
+
+```lisp
+(def-fn rotate(n f)
+	(def-fn inner (w)
+		(wiederhole n
+			(f)
+			(drehe w)
+		)
+	)
+	(inner (/ 360 n))
+)
+(def-fn make-poly (n)
+	(def-fn mark ()
+		(markiere 15)
+	)
+	(def-fn poly ()
+		(rotate n mark)
+	)
+	poly
+)
+((make-poly 4))
 ```
 
 ```lisp
