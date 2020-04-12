@@ -1059,3 +1059,229 @@ der Seiten wird sehr, sehr groß), aber wenn statt dessen eine
 kompliziertere Berechnung ausgeführt wird, kann das ein echter Zeitgewinn
 werden.
 
+### Aufgabe 6: Geschachtelte Polygone
+
+Gegeben ist folgendes Programm:
+
+```lisp
+(def-fn std-poly (n)
+	(def-fn poly-1 (l)
+		(def-fn poly (r)
+			(wiederhole n
+				(markiere l)
+				(drehe (/ (* r 360) n))
+			)
+		)
+		(poly 1)
+	)
+	(poly-1 20)
+)
+(std-poly 4)
+```
+
+1. Beschreibe die Unterschiede zur vorherigen Definition von `poly`,
+   `poly-1` und `std-poly`
+2. Welche Vorteile hat das neue Programm (z.B. Parameter-Anzahl)?
+3. Welche Nachteile hat das neue Programm (z.B. Sichtbarkeit)?
+
+### Aufgabe 7: Mehrere Parameter
+
+Gegeben sind die Programme
+
+```lisp
+(def-fn poly (n)
+	(def-fn inner (w)
+		(wiederhole n
+			(markiere 20)
+			(drehe w)
+		)
+	)
+	(inner (/ 360 n))
+)
+(poly 3)
+```
+
+und
+
+```lisp
+(def-fn poly (n)
+	(def-fn inner (n w)
+		(wiederhole n
+			(markiere 20)
+			(drehe w)
+		)
+	)
+	(inner n (/ 360 n))
+)
+(poly 3)
+```
+
+1. Beschreibe die Unterschiede der beiden Programme.
+2. Was sind die Vorteile des ersten Programms (z.B. Parameter, Sichtbarkeit)?
+3. Was sind die Vorteile des zweiten Programms (z.B. Verständlichkeit)?
+
+### Rückgabewerte
+
+Jede Funktion gibt auch einen Wert zurück.
+Das ist der Wert der letzten Funktion, die innerhalb der Funktion
+ausgeführt wird.
+
+Betrachten wird das folgende Programm:
+
+```lisp
+(def-fn winkel (n)
+	(/ 360 n)
+)
+(def-fn poly (n)
+	(wiederhole n
+		(markiere 20)
+		(drehe (winkel n))
+	)
+)
+(poly 3)
+```
+
+Die Funktion `winkel` führt die Division aus und gibt den neuen Wert
+zurück.
+
+Der Parameter von `winkel` kann vermieden werden, wenn wir die Funktion
+als innere Funktion verwenden:
+
+```lisp
+(def-fn poly (n)
+	(def-fn winkel ()
+		(/ 360 n)
+	)
+	(wiederhole n
+		(markiere 20)
+		(drehe (winkel n))
+	)
+)
+(poly 3)
+```
+
+Nehmen wir gleich eine weitere Funktion für die Kantenlänge:
+
+```lisp
+(def-fn poly (n)
+	(def-fn winkel ()
+		(/ 360 n)
+	)
+	(def-fn länge ()
+		20
+	)
+	(wiederhole n
+		(markiere (länge))
+		(drehe (winkel n))
+	)
+)
+(poly 3)
+```
+
+Wenn wir eine Kantenlänge $l$ haben, so hat der Polyeder einen
+Umfang von $u=l\cdot n$.
+Wenn es sich um einen Kreis handeln würde, dann wäre der Durchmesser
+$d\cdot\pi=u$.
+
+Für jeden Polyeder gilt aber immer noch $d\cdot\pi\geq l\cdot n$.
+Da $d$ nicht über $20$ wachsen soll, gilt für $l$:
+$l\leq 20\cdot\pi /n$.
+
+Das können wir einbauen:
+
+```lisp
+(def-fn poly (n)
+	(def-fn winkel ()
+		(/ 360 n)
+	)
+	(def-fn länge ()
+		(/ (* 20 3.142) n)
+	)
+	(wiederhole n
+		(markiere (länge))
+		(drehe (winkel n))
+	)
+)
+(poly 7)
+(drehe 180)
+(poly 20)
+```
+
+Zur Optimierung kann der Aufruf von `winkel` und `länge` auch nur
+einmal erfolgen:
+
+```lisp
+(def-fn poly (n)
+	(def-fn winkel ()
+		(/ 360 n)
+	)
+	(def-fn länge ()
+		(/ (* 20 3.142) n)
+	)
+	(def-fn inner (w l)
+		(wiederhole n
+			(markiere l)
+			(drehe w)
+		)
+	)
+	(inner (winkel) (länge))
+)
+(poly 7)
+```
+
+Durch die Abstraktion der Länge in eine eigene Funktion macht es auf
+einmal Sinn, sich mit dem Wert zu befassen und ihn zu optimieren.
+
+### Funktionen als Argumente
+
+Jetzt kommen wir zum Höhepunkt dieses Heftes.
+
+Funktionen können auch anderen Funktionen als Argumente übergeben oder
+auch als Rückgabewerte zurück gegeben werden.
+
+Betrachte dazu folgendes Programm:
+
+```lisp
+(def-fn rotate(n f)
+	(def-fn inner (w)
+		(wiederhole n
+			(f)
+			(drehe w)
+		)
+	)
+	(inner (/ 360 n))
+)
+(def-fn poly (n)
+	(def-fn mark ()
+		(markiere 20)
+	)
+	(rotate n mark)
+)
+(poly 3)
+```
+
+```lisp
+(def-fn rotate(n f)
+	(def-fn inner (w)
+		(wiederhole n
+			(f)
+			(drehe w)
+		)
+	)
+	(inner (/ 360 n))
+)
+(def-fn make-poly (n)
+	(def-fn mark ()
+		(markiere 15)
+	)
+	(def-fn poly ()
+		(rotate n mark)
+	)
+	poly
+)
+(def-fn rose (n f)
+	(rotate n f)
+)
+(rose 8 (make-poly 4))
+```
+
