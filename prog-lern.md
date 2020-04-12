@@ -1251,6 +1251,23 @@ Aber die daraus resultierenden Programme sind nicht sehr mächtig.
 (log 5)
 ```
 
+```lisp
+(def-fn id (x) x)
+(def-fn mul-1.2 (x) (* x 1.2))
+(def-fn loop (l w up-l up-w)
+	(markiere l)
+	(drehe w)
+	(wenn (> (abs (x-koord)) 25)
+		nil
+		(loop
+			(up-l l) (up-w w)
+			up-l up-w
+		)
+	)
+)
+(loop 5 50 mul-1.2 id)
+```
+
 ## Funktionen als Argumente
 
 Jetzt kommen wir zum Höhepunkt dieses Heftes.
