@@ -264,7 +264,7 @@ Nach Klick auf den „Auftrag ausführen“-Knopf werden die Anweisungen
 ausgeführt.
 Das Ergebnis erscheint im anderen Feld:
 
-!(yoshi-3.pdf)
+!(imgs/triangle.pdf)
 
 Sehen wir uns das Programm genauer an:
 
@@ -322,7 +322,7 @@ Das Programm kann wie folgt aussehen:
 
 Es liefert das folgende Ergebnis:
 
-!(yoshi-4.pdf)
+!(imgs/square.pdf)
 
 ### Erste Erkenntnisse
 
@@ -466,7 +466,7 @@ Das resultierende Programm sieht so aus:
 
 Das Programm liefert das folgende Ergebnis:
 
-!(yoshi-5.pdf)
+!(imgs/penta.pdf)
 
 Vorher habe ich geschrieben, dass sich Yoshi auch um ein Vielfaches von
 $\ang{360}$ drehen kann.
@@ -486,7 +486,7 @@ Hier ist das neue Programm:
 
 Als Ergebnis erhalten wir ein Pentagram:
 
-!(yoshi-penta.pdf)
+!(imgs/star.pdf)
 
 ### Aufgabe 1: Modernes Dreieck
 
@@ -527,7 +527,7 @@ $\ang{60}$.
 
 Welches Programm liefert das folgende Ergebnis?
 
-!(yoshi-rose.pdf)
+!(imgs/rose.pdf)
 
 ### Aufgabe 4: Kreiselei
 
@@ -694,7 +694,7 @@ Ein neues Programm kann so aussehen:
 
 Es entsteht folgendes Bild:
 
-!(poly-5-3.pdf)
+!(imgs/3-pentas.pdf)
 
 Hier sieht man einen zweiten Vorteil der Funktion:
 Eine Funktion zu schreiben und einmal aufzurufen, sieht nach zusätzlichem

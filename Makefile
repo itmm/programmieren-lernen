@@ -1,6 +1,6 @@
 .PHONY: all clean
 
-SOURCEs := $(wildcard *.md)
+SOURCEs := $(filter-out TODOs.md,$(wildcard *.md))
 PLAIN_OUTPUTs := $(SOURCEs:.md=.pdf)
 LIGHT_OUTPUTs := $(SOURCEs:.md=-light.pdf)
 DARK_OUTPUTs := $(SOURCEs:.md=-dark.pdf)
