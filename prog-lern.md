@@ -388,7 +388,7 @@ Argumente so oft aus, wie in dem ersten Argument angegeben wurde.
 Oder noch genauer: solange das erste Argument größer als $0$ ist,
 werden die weiteren Befehle ausgeführt und danach das erste Argument um
 $1$ reduziert.
-Anstatt $4$ könnte man im Programm auch $3.2$ schreiben.
+Anstatt $4$ könnte man im Programm auch $3{,}2$ schreiben.
 Wichtig ist, dass Dezimalzahlen wie im Englischen mit einem
 Dezimal-Punkt anstatt des deutschen Dezimal-Kommas geschrieben werden
 müssen.
@@ -848,6 +848,71 @@ Nicht immer macht es Sinn, alle diese Schritte im Kopf durchzuführen.
 Aber gerade am Anfang hilft es ungemein, um zu verstehen, wie ein
 Funktionsaufruf funktioniert.
 
+### Wieso sind die Klammern so komisch?
+
+In anderen Programmiersprachen und auch in der Mathematik werden
+*Funktionen* oft anders geschrieben, als bei Yoshis Anweisungen.
+Um zwei Zahlen zu dividieren, wird in der Mathematik oft die
+*Infix-Notation* verwendet: $3/5$.
+
+Infix bedeutet, dass der *Operator* zwischen den *Argumenten* steht.
+Der Operator ist hier $/$ und zeigt an, dass es sich um eine Division
+handelt. Die Argumente dieser Division sind $3$ und $5$.
+
+Auch in vielen Programmiersprachen kann man einfach `3 / 5` schreiben.
+
+Nicht so bei Yoshi: Hier muss `(/ 3 5)` geschrieben werden.
+Es handelt sich hierbei um eine Präfix-Notation, wie sie in der
+Programmiersprache LISP verwendet wird.
+
+Das ist zunächst ungewohnt, macht die Sprache selber aber einfacher.
+So funktioniert diese Notation auch mit einem oder keinem Argument.
+Auch mehr als zwei Argumente funktionieren:
+
+```lisp
+(+)
+(+ 2)
+(+ 2 3 5 7)
+```
+
+Andere Sprachen schreiben den Operator vor die Klammern und trennen
+die Argumente mit Kommata.
+Das sieht dann mehr nach mathematischen Formeln aus.
+
+Der Funktionsaufruf `(poly 4 20 1)` würde in C etwa so lauten:
+`poly(4, 20, 1);`.
+
+Diese Unterscheidung macht es für den Rechner aber etwas schwerer,
+die Aufrufe richtig zu erkennen und auszuführen.
+Für Yoshi sind Aufrufe nur ganz normale Listen.
+Es muss nur stets das erste Element der Liste ein gültiger Operator
+sein.
+
+Die leere Liste `()` ist kein gültiger Funktionsaufruf.
+
+Als weiterer Vorteil muss sich weder der Rechner noch der Anwender
+um Punkt-Vor-Strich-Rechnung kümmern.
+Oder ganz allgemein darum, in welcher Reihenfolge Infix-Operatoren
+ausgeführt werden.
+
+So ist erst einmal nicht klar, ob `3 + 2 * 4` eigentlich
+`3 + (2 * 4)` meint, oder `(3 + 2) * 4`.
+Wer in der Schule aufgepasst hat, wird die zweite Version verwerfen.
+Das Ergebnis ist $11$ und nicht $20$.
+
+Aber auch dem Rechner muss es beigebracht werden.
+Mit der Präfix-Schreibweise wird der kann die erste Form gar nicht
+hingeschrieben werden.
+Man muss sich direkt für eine der beiden Varianten entscheiden:
+
+```lisp
+(+ 3 (* 2 4))
+(* (+ 3 2) 4)
+```
+
+Auch das sieht zunächst komisch aus.
+Aber eigentlich macht es die Reihenfolge nur klarer.
+
 ### Frage: Kann eine Funktion sich auch selber aufrufen?
 
 Auf jeden Fall!
@@ -1296,6 +1361,28 @@ Betrachte dazu folgendes Programm:
 (poly 3)
 ```
 
+Die Ausgabe ist natürlich wieder einmal das Dreieck.
+Aber der Weg dahin ist etwas verwinkelter als vorher.
+
+Die Funktion `rotate` erhält als zweiten Parameter eine Funktion `f`.
+Diese Funktion wird `n`-mal ausgeführt und dazwischen dreht sich
+Yoshi so weit, dass er sich insgesamt genau einmal um die eigene
+Achse dreht.
+
+Durch die Verwendung der Funktion `inner` muss dieser Winkel nur
+einmal berechnet werden.
+Und nicht bei jedem Schritt von Yoshi erneut.
+
+Die Funktion `poly` ruft `rotate` mit der Funktion `mark` auf.
+`mark` zeichnet nur die Markierung.
+
+Von außen hat sich der Aufruf von `poly` nicht verändert:
+`(poly 3)` funktioniert so wie immer.
+
+Zusätzlich haben wir die Funktion `rotate`, die wir auch für andere
+Sachen benutzen können.
+
+
 ```lisp
 (def-fn rotate(n f)
 	(def-fn inner (w)
@@ -1342,4 +1429,57 @@ Betrachte dazu folgendes Programm:
 )
 (rose 8 (make-poly 4))
 ```
+
+## Zusammenfassung
+
+In diesem Heft wurde eine Programmiersprache vorgestellt, mit der
+Yoshi Fahrbahnmarkierungen zeichnen kann.
+
+Programme bestehen aus einer Liste von Funktions-Aufrufen.
+
+Ein Funktionsaufruf hat die Form `(operator arg1 arg2 ...)`.
+
+### Argumente
+
+Als Argumente haben wir bisher Zahlen kennengelernt.
+
+Zusätzlich können auch Funktionen als Argumente übergeben werden.
+
+### Zeichen Operatoren
+
+`(markiere 10)` zeichnet eine $10$ Einheiten lange Linie.
+
+`(drehe 10)` dreht sich um $\ang{10}$ im Uhrzeigersinn.
+
+### Arithmetische Operatoren
+
+`(+ 10 20)` addiert zwei oder mehr Zahlen.
+Wird nur ein Argument angegeben, so wird dieses zurückgegeben.
+Wird kein Argument angegeben, so wird $0$ zurückgegeben.
+
+`(- 20 10)` zieht vom ersten Argument alle anderen Argumente ab.
+Wird nur ein Argument angegeben, so wird dieses negiert.
+Wird kein Argument angegeben, so wird $0$ zurückgegeben.
+
+`(* 3 2)` multipliziert zwei oder mehr Zahlen miteinander.
+Wird nur ein Argument angegeben, so wird dieses zurückgegeben.
+Wird kein Argument angegeben, so wird $1$ zurückgegeben.
+
+`(/ 3 2)` teilt das erste Argument durch alle anderen Argumente.
+Wird nur ein Argument angegeben, so wird der Kehrwert zurückgegeben.
+Wird kein Argument angegeben, so wird $1$ zurückgegeben.
+
+### Bedingungen und Schleifen
+
+`(wiederhole n (f))` wiederholt alle Argumente hinter `n`
+$k$-mal. $k$ ist die kleinste ganze Zahl, die nicht kleiner als `n` ist.
+Alle Argumente hinter `n` müssen Funktionsaufrufe sein.
+
+`(wenn c (t) (f))` führt den Funktionsaufruf `(t)` aus, wenn die
+Bedingung `c` wahr ist. Ansonsten wird der Funktionsaufruf `(f)`
+ausgeführt, sofern er vorhanden ist.
+
+### Vergleichs-Operatoren
+
+### Funktionen definieren
 
