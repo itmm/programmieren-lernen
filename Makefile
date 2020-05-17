@@ -23,13 +23,13 @@ dots: $(DOT_PDFs)
 	../dox/dox --theme=dark < $^ > $@
 
 imgs/%.pdf: imgs/%.dot
-	dot -Tpdf -Gtruecolor -Gbgcolor=transparent -Nstyle=filled '-Nfillcolor=0.0000 0.0000 0.9412' '-Nfontsize=9' '-Nfontname=CMU Concrete' $^ >$@
+	dot -Tpdf -Gmargin=1 -Gtruecolor -Gbgcolor=transparent -Nstyle=filled '-Nfillcolor=0.0000 0.0000 0.9412' '-Nfontsize=9' '-Nfontname=CMU Concrete' $^ >$@
 
 imgs/%-light.pdf: imgs/%.dot
-	dot -Tpdf -Gtruecolor -Gbgcolor=transparent -Nstyle=filled '-Nfillcolor=0.1267 0.1050 0.9333' '-Nfontsize=9' '-Nfontname=CMU Concrete' '-Ncolor=0.5444 0.2290 0.5137' '-Nfontcolor=0.5444 0.2290 0.5137' '-Ecolor=0.5444 0.2290 0.5137' $^ >$@
+	dot -Tpdf -Gmargin=1 -Gtruecolor -Gbgcolor=transparent -Nstyle=filled '-Nfillcolor=0.1267 0.1050 0.9333' '-Nfontsize=9' '-Nfontname=CMU Concrete' '-Ncolor=0.5444 0.2290 0.5137' '-Nfontcolor=0.5444 0.2290 0.5137' '-Ecolor=0.5444 0.2290 0.5137' $^ >$@
 
 imgs/%-dark.pdf: imgs/%.dot
-	dot -Tpdf -Gtruecolor -Gbgcolor=transparent -Nstyle=filled '-Nfillcolor=0.5339 0.8939 0.2588' '-Nfontsize=9' '-Nfontname=CMU Concrete' '-Ncolor=0.5175 0.1267 0.5882' '-Nfontcolor=0.5175 0.1267 0.5882' '-Ecolor=0.5175 0.1267 0.5882' $^ >$@
+	dot -Tpdf -Gmargin=1 -Gtruecolor -Gbgcolor=transparent -Nstyle=filled '-Nfillcolor=0.5339 0.8939 0.2588' '-Nfontsize=9' '-Nfontname=CMU Concrete' '-Ncolor=0.5175 0.1267 0.5882' '-Nfontcolor=0.5175 0.1267 0.5882' '-Ecolor=0.5175 0.1267 0.5882' $^ >$@
 
 %.pdf: %.tex
 	pdflatex $^

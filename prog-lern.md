@@ -71,12 +71,13 @@ Kunststücke vorzuführen.
 
 Dieses Buch ist der erste Schritt einer Anleitung zum Programmieren.
 
-Alles was du brauchst ist ein Gerät mit Internet-Anschluß, auf dem
+Alles was wir brauchen ist ein Gerät mit Internet-Anschluß, auf dem
 ein Web-Browser läuft.
 Zum Beispiel ein Tablet oder Smart-Phone.
 Oder ein Laptop.
-Oder ein Desktop-Computer.
-Das sind diese Kisten mit abgesetzten Bildschirm und Tastatur.
+Oder ein Desktop-Rechner.
+Das sind diese Kisten mit abgesetzten Bildschirm und Tastatur, die 
+früher benutzt wurden.
 
 Damit können wir ein klein wenig programmieren lernen.
 Es ist gar nicht so schwer.
@@ -95,45 +96,65 @@ geht.
 Wenn wir kein gemeinsames Verständnis der verwendeten Begriffe haben,
 dann ist es höchstens Glück, wenn Wissen und Erkenntnis transportiert
 werden.
+
 Das kann funktionieren. Muss es aber nicht.
+
+### Gendering
+
+Wenn bei allen Begriffen die Personen beschreiben, die männliche und
+weibliche Form verwendet wird, bläht das den Text auf, ohne Mehrwert zu
+liefern.
+Auch fühlen sich Personen ausgegrenzt, die sich keiner dieser beiden
+Gruppen zugehörig fühlen.
+
+Um den Text flüssig lesbar zu halten (ohne ständig von Großbuchstaben
+mitten in Worten, Bindestrichen oder Sternchen abgelenkt zu werden),
+möchte ich die Form wählen, zu der sich die Professoren in meinem
+Fachbereich entschlossen haben.
+
+Es wird grundsätzlich nur die weibliche Form verwendet!
+Und das in einem Fachbereich, der damals eine Studentinnen-Quote von
+unter $10\%$ hatte.
 
 ### Definitionen
 
 Zuerst geht es um unsere eigene Rolle.
-Der *Programmierer* oder die *Programmiererin* erstellen
-Programme.
-Gute Programmierer zeichnen sich dadurch aus, dass sie recht schnell
+*Programmiererinnen* erstellen Programme.
+Gute Programmiererinnen zeichnen sich dadurch aus, dass sie recht schnell
 Programme erstellen können, die relativ wenig Fehler haben und
-selber schnell laufen.
+schnell laufen.
+
 Aber das sind vorerst nur Details.
+
 Wichtig ist: Wir müssen Programme schreiben.
+
+```gv
+digraph G {
+	"Programmiererin" -> "Programm"
+}
+```
 
 *Programme* selbst sind Anweisungen, die so klar und haarklein
 umrissen sind, dass selbst eine Maschine sie ausführen kann.
 Es gibt unterschiedliche *Programmiersprachen*, in denen
 Programme formuliert werden können.
 
-Ein Beispiel ist JavaScript, das heute in fast jedem Web-Browser
-verwendet werden kann.
-Aber JavaScript hat so seine Tücken.
-Es wird leichter sein, mit einer einfacheren Sprache anzufangen.
-
-```gv
-digraph G {
-	"Programmierer[in]" -> "Programm"
-}
-```
-
-Als drittes Element gibt es noch die *Maschine*, welche ein
-Programm ausführt.
-Das kann ein Computer sein.
-Muss es aber nicht.
-
 ```gv
 digraph G {
 	"Maschine" -> "Programm"
 }
 ```
+
+Ein Beispiel ist JavaScript, das heute in fast jedem Web-Browser
+verwendet werden kann.
+Aber JavaScript hat so seine Tücken.
+Es wird leichter sein, mit einer einfacheren Sprache anzufangen.
+
+Eine *Maschine*, führt ein Programm aus.
+Sie arbeitet Schritt für Schritt die Anweisungen ab, die der
+Programmierer vorgegeben hat.
+Das kann ein Rechner sein.
+Muss es aber nicht.
 
 Das folgenden Beispiel zeigt, wie man schon um 1900 ein Programm
 ganz ohne Elektronik schreiben und ausführen konnte.
@@ -142,7 +163,7 @@ ganz ohne Elektronik schreiben und ausführen konnte.
 
 Die Fabriken sind ein schönes Beispiel für das nicht-elektronische
 Ausführen eines Programms.
-Man spricht auch gerne vom Abarbeiten eines Programms:
+Wir können auch vom Abarbeiten eines Programms sprechen:
 Es gibt eine Liste von Schritten, die nacheinander ausgeführt werden
 müssen.
 
@@ -159,15 +180,15 @@ Natürlich war die eigentliche Liste in Wolfsburg etwas länger.
 Aber die würde den Rahmen sprengen und rechtliche Streitigkeiten
 heraufbeschwören.
 
-Bleiben wir bei den drei Schritten.
+Bleiben wir bei den drei Komponenten.
 
-Die Programmierer in der Fabrik sind die Ingenieure und
-Wissenschaftler, die alle Schritte zusammentragen, die notwendig
+Die Programmiererinnen in der Fabrik sind die Ingenieure und
+Wissenschaftlerinnen, die alle Schritte zusammentragen, die notwendig
 sind, um ein Auto zu bauen.
 
 Je genauer die Schritte beschrieben sind, desto einheitlicher sind
 die resultierenden Autos.
-Und desto weniger muss der Fließband-Arbeiter in der Fabrik vom
+Und desto weniger muss die Fließband-Arbeiterin in der Fabrik vom
 Auto-Bauen verstehen.
 
 In unserem vereinfachten Programm sind die ersten beiden Schritte
@@ -180,7 +201,7 @@ Die ich leider selber nicht besitze.
 Daher muss ich beim Auto-Bauen notgedrungen eine sehr kompetente
 Maschine zum Ausführen meines Programms voraussetzen.
 
-In diesem Beispiel ist die Fabrik-Halle mit ihren Arbeitern,
+In diesem Beispiel ist die Fabrik-Halle mit ihren Arbeiterinnen,
 Fließ-Bändern und Lackier-Robotern die Maschine, die das Programm
 „ich baue einen Polo“ ausführen kann.
 
@@ -196,38 +217,38 @@ Diese Begriffe werden wir später noch präzisieren müssen.
 Ein Programm zum Auto-Bauen ist heute gar nicht mehr so abwegig.
 
 Heute können Autos vielfältig konfiguriert werden.
-Das erleichtert zum einen den Händlern, sich um das Rückgaberecht
+Das erleichtert zum einen den Händlerinnen, sich um das Rückgaberecht
 zu drücken.
-Aber auch die Kunden genießen, dass ihr Auto ganz individuell zu
+Aber auch die Kundinnen genießen, dass ihr Auto ganz individuell zu
 ihnen passt und nicht in einem Einheits-Schwarz wie alle anderen
-Autos herumfährt. Obwohl schwarz immer noch eine sehr verbreitete
-Farbe ist.
+Autos herumfährt.
+Obwohl schwarz immer noch eine sehr verbreitete Farbe ist.
 
 Aber die Konfiguration eines Autos ist im Prinzip auch ein Programm.
-Es bekommt nicht jeder Arbeiter in der Fabrik eine Kopie meines
-Bestell-Zettels, aber er bekommt eine Liste mit Schritten, die er
+Es bekommt nicht jede Arbeiterin in der Fabrik eine Kopie meines
+Bestell-Zettels, aber sie bekommt eine Liste mit Schritten, die sie
 ausführen muss, um genau mein Auto zu bauen.
 
 Diese Listen werden nicht händisch erstellt.
 Vielmehr gibt es ein Programm, das aus der Konfiguration (die ja wie
 gesagt auch ein Programm ist) ein anderes Programm macht.
-Solche Programme nennt man *Compiler*.
-Und mit ihnen kann man jede Menge Schabernack anstellen.
+Solche Programme werden *Compiler* genannt.
+Und mit ihnen können wir jede Menge Schabernack anstellen.
 
 ### Andere Namen
 
 Zusammen mit dem Programm wird oft der Begriff *Algorithmus*
 verwendet.
 Ein Algorithmus beschreibt, wie ein Programm funktioniert.
-Er ist meistens nicht in einer Programmier-Sprache geschrieben,
+Er ist meistens nicht in einer Programmiersprache geschrieben,
 sondern abstrakt.
-Ein Computer kann einen Algorithmus nicht direkt ausführen.
+Ein Rechner kann einen Algorithmus nicht direkt ausführen.
 Ein Mensch kann es jedoch.
 Also ist ein Algorithmus durchaus ein Programm für die Maschine
-Programmierer.
-Meistens übernimmt es dann der Programmierer den Algorithmus in
+Programmiererin.
+Meistens übernimmt es dann die Programmiererin, den Algorithmus in
 ein Programm einer anderen Programmiersprache zu übersetzen, so dass
-ein Computer ihn ausführen kann.
+ein Rechner ihn ausführen kann.
 
 Aber für uns macht das erst einmal keinen Unterschied.
 Ein Algorithmus ist ein Programm für eine bestimmte Maschine (uns!).
@@ -244,17 +265,57 @@ Maschine.
 
 *Koch-Rezepte* werden auch immer wieder gerne als ein Beispiel
 für Programme herangezogen.
-Dem kann ich nur anschließen.
 Unser Begriff des Programms ist allgemein genug, um Rezepte mit zu
 umfassen.
 Am Beispiel des Rezeptes können auch wieder schön die einzelnen
 Komponenten unterschieden werden.
 Ein Rezept macht noch keinen Eierpfannkuchen.
-Dazu benötigt man noch eine ausführende Maschine (den Koch) und
+Dazu benötigen wir noch eine ausführende Maschine (die Köchin) und
 die notwendigen Zutaten (Eier, Mehl) und Betriebsmittel
 (Herd, Pfanne).
 Nur so kann die erwünschte Ausgabe produziert und danach verzehrt
 werden.
+
+### Entkopplung
+
+Ein anderer wichtiger Aspekt ist die *zeitliche Entkopplung* von
+Programmiererin und Maschine.
+
+Die Programmiererin schreibt ein Programm.
+
+Die Maschine führt das Programm aus.
+
+Aber die Programmiererin muss bei der Ausführung nicht mehr anwesend
+sein.
+
+Sie muss nicht die Maschine permanent überwachen und sicherstellen,
+dass das Programm korrekt arbeitet.
+
+Das ist gerade die Aufgabe des Programms.
+Durch das Programm hat die Programmiererin einer Maschine soviel
+Wissen vermittelt, dass die Maschine an ihrer Statt die Aufgabe
+ausführen kann.
+
+```gv
+digraph G {
+	"Programmiererin" -> "Wissen"
+	"Wissen" -> "Maschine"
+}
+```
+
+Nur dadurch ist es möglich, dass ein Programm gleichzeitig auf einer
+Vielzahl von Rechnern laufen kann.
+
+Hier tritt der Bezug zur Magie wieder auf.
+Eine Programmiererin schafft sich dienstbare Geister.
+Ein Programm funktioniert wie ein Golem.
+Auch dieser führt genau die Anweisungen aus, mit denen sein Schöpfer
+ihn ausgestattet hat.
+
+In den Sagen und Märchen geht das oft schief, wenn sich die Zauberin
+nicht klar genug ausgedrückt hat.
+Wir werden sehen, dass wir beim Programmieren genau die gleiche
+Schwierigkeit haben.
 
 ## Zeichnen lassen
 
@@ -262,7 +323,7 @@ Genug der Vorrede.
 Auf zum ersten richtigen Programm!
 Unter `https://itmm.github.io/yoshi/` gibt es eine Web-Seite
 mit zwei Feldern.
-In das eine Feld kann das Programm eingegeben werden.
+In das linke Feld können wir Programme eingeben.
 Das Programm besteht aus Mal-Anweisungen.
 
 Die Anweisungen richten sich an die Schildkröte Yoshi aus der Mario-Welt,
@@ -272,9 +333,9 @@ zeichnen.
 Aber ihr muss ganz genau gesagt werden, was sie zeichnen muss.
 Aus lizenz-rechtlichen Gründen wird Yoshi selber nicht gezeichnet.
 
-Nach Klick auf den „Auftrag ausführen“-Knopf werden die Anweisungen
-ausgeführt.
-Das Ergebnis erscheint im anderen Feld:
+Wenn wir auf den „Auftrag ausführen“-Knopf klicken, werden die
+Anweisungen ausgeführt.
+Das Ergebnis erscheint im rechten Feld:
 
 !(imgs/triangle.pdf)
 
@@ -289,8 +350,12 @@ Sehen wir uns das Programm genauer an:
 (drehe 120)
 ```
 
-Jede Zeile ist eine eigene Anweisung.
+Das Programm besteht aus sechs Anweisungen.
 Jede Anweisung beginnt mit `(` und endet mit `)`.
+
+Yoshi arbeitet der Reihe nach alle Anweisungen ab.
+Wenn er eine Anweisung nicht versteht, dann gibt es eine
+*Fehlermeldung*.
 
 Das erste Wort in der Anweisung ist der *Name* der Anweisung.
 Er sagt Yoshi, was für eine Aktion er ausführen soll.
@@ -301,13 +366,13 @@ zwanzig Schritte in die aktuelle Richtung zu laufen.
 Dabei hinterläßt sie eine Linie.
 
 Die nächste Anweisung `(drehe 120)` dreht die Schildkröte um
-`120` Grad (eine Drittel-Drehung) im Uhrzeigersinn.
+$\ang{120}$ (eine Drittel-Drehung) im Uhrzeigersinn.
 Sie blickt nun nach rechts/unten.
 Die nächste Linie fährt also in einem spitzen Winkel in diese Richtung.
 
 Nach insgesamt drei Markierungen und Drehungen steht Yoshi wieder
 auf seinem Startpunkt und blickt wieder nach oben.
-Zusätzlich hat sie aber ein Dreieck gezeichnet.
+Zusätzlich hat er aber ein Dreieck gezeichnet.
 
 ### Ein Quadrat zeichnen
 
@@ -332,7 +397,8 @@ Das Programm kann wie folgt aussehen:
 (drehe 90)
 ```
 
-Es liefert das folgende Ergebnis:
+Wenn wir das Programm in das linke Feld eingeben und wieder auf den
+„Auftrag ausführen“-Knopf klicken, sollten wir folgendes Ergebnis sehen:
 
 !(imgs/square.pdf)
 
@@ -341,9 +407,10 @@ Es liefert das folgende Ergebnis:
 Jetzt haben wir schon zwei Programme geschrieben:
 Mit dem ersten malt Yoshi ein Dreieck.
 Mit dem zweiten malt die Schildkröte ein Quadrat.
-Schon beim Quadrat fällt auf, wie mühevoll es ist, Yoshi geometrische
+
+Schon beim Quadrat fällt auf, wie umständlich es ist, Yoshi geometrische
 Formen zu erklären.
-Zwar kann man mit etwas probieren Programme schreiben, die nun auch
+Zwar können wir mit etwas probieren Programme schreiben, die nun auch
 Vierecke, Fünfecke und so weiter schreiben.
 Aber für die Errechnung der Winkel wird irgendwann ein Taschenrechner
 notwendig.
@@ -356,12 +423,12 @@ Wenn Programmiersprachen keine Wiederholungen unterstützen, ist das
 leider das Einzige, was bleibt.
 
 Das hat gravierende Nachteile:
-Wenn man später etwas verändern will, müssen viele Zeilen angepasst
+Wenn wir später etwas verändern, müssen viele Zeilen angepasst
 werden.
-Wenn man ein paar vergißt, funktioniert das Programm vielleicht nicht
-mehr richtig.
+Wenn wir ein paar Stellen vergessen, funktioniert das Programm vielleicht
+nicht mehr richtig.
 Bereits bei der Umschreibung vom Dreiecks-Programm zum Quadrat-Programm
-kann man dies beobachten.
+können wir dies beobachten.
 
 Man sollte meinen, dass es in den letzten Jahren genug Fortschritte
 gegeben hat, um uns diese Mühsal zu ersparen.
@@ -372,7 +439,7 @@ Zum Glück ist Yoshi cleverer.
 
 ### Wiederholen
 
-Das Programm zum Zeichnen eines Quadrats kann man auch so aufschreiben:
+Das Programm zum Zeichnen eines Quadrats können wir auch so aufschreiben:
 
 ```lisp
 (wiederhole 4
@@ -382,30 +449,31 @@ Das Programm zum Zeichnen eines Quadrats kann man auch so aufschreiben:
 ```
 
 Das ist viel weniger zum Tippen, aber bringt das gleiche Resultat.
-Programmierer sind faul: warum arbeiten, wenn der Rechner auch die
-Arbeit für einen erledigen kann. Oftmals ist der Computer dabei
+Programmiererinnen sind faul: warum arbeiten, wenn der Rechner auch die
+Arbeit für einen erledigen kann. Oftmals ist der Rechner dabei
 gründlicher und macht weniger Fehler.
 
 Aber erst einmal soll geklärt werden, was das Programm überhaupt macht,
 bzw. wieso es funktioniert.
 
-Der erste Befehl heißt `wiederhole` und hat drei Argumente.
+Der erste Anweisung hat den Namen `wiederhole` und hat drei Argumente.
 Ja, genau: $3$.
-Das erste Argument ist eine Zahl.
-Die beiden weiteren Argumente sind wieder Befehle!
+Das erste Argument ist eine Zahl ($4$).
+Die beiden weiteren Argumente sind wieder Anweisungen!
 
-Der `wiederhole` Befehl nimmt das erste Argument und führt die weiteren
-Argumente so oft aus, wie in dem ersten Argument angegeben wurde.
+Die `wiederhole` Anweisung nimmt das erste Argument und führt die
+weiteren Argumente so oft aus, wie in dem ersten Argument angegeben
+wurde.
 
-Oder noch genauer: solange das erste Argument größer als $0$ ist,
-werden die weiteren Befehle ausgeführt und danach das erste Argument um
-$1$ reduziert.
-Anstatt $4$ könnte man im Programm auch $3{,}2$ schreiben.
-Wichtig ist, dass Dezimalzahlen wie im Englischen mit einem
-Dezimal-Punkt anstatt des deutschen Dezimal-Kommas geschrieben werden
-müssen.
-Aber grundsätzlich kann jede Zahl als erstes Argument von `wiederhole`
-verwendet werden.
+Oder noch genauer: wenn erste Argument größer als $0$ ist,
+werden die weiteren Befehle ausgeführt und danach die `wiederhole`
+Anweisung erneut ausgeführt. Diesmal aber mit einem um $1$ reduzierten
+ersten Argument.
+
+Anstatt $4$ können wir im Programm auch $3{,}2$ schreiben.
+Wichtig ist, dass Dezimalzahlen mit einem Komma geschrieben werden.
+Viele Programmiersprachen erwarten den im Englischen üblichen Punkt.
+Aber diesen können wir bei Yoshi verwenden, um Tausender zu gruppieren.
 
 Bleibt nur das lästige Problem mit der Winkel-Berechnung.
 
@@ -414,19 +482,20 @@ Bleibt nur das lästige Problem mit der Winkel-Berechnung.
 Das können wir zum Glück auch dem Rechner überlassen.
 
 Yoshi soll nach dem Ausführen in die gleiche Richtung blicken.
-Also muss er sich um `360` Grad (oder ein Vielfaches davon) drehen.
+Also muss er sich um $\ang{360}$ (oder ein Vielfaches davon) drehen.
 
-Beim Quadrat muss er sich also um $360/4=90$ Grad drehen, da ein
+Beim Quadrat muss er sich also um $\ang{360}/4=\ang{90}$ drehen, da ein
 Quadrat vier Seiten hat.
 
-Beim Dreieck muss er sich um $360/3=120$ Grad drehen.
+Beim Dreieck muss er sich um $\ang{360}/3=\ang{120}$ drehen.
 
 Die Berechnung kann auch Yoshi ausführen.
 Aber auf eine etwas komische Art.
-Es gibt einen Befehl, der eine Zahl durch eine andere teilt.
-Wie in der obigen Formel heißt dieser Befehl `/`.
+Es gibt eine Anweisung, die eine Zahl durch eine andere teilt.
+Wie in der obigen mathematischen Formel hat diese Anweisung den Namen
+`/`.
 
-Aber der Befehl muss ja immer als erstes Element der Liste stehen.
+Aber der Name muss ja immer als erstes Element der Liste stehen.
 Um also $360/4$ zu berechnen, lautet der Befehl `(/ 360 4)`.
 Diesen können wir das Quadrat-Programm einsetzen:
 
@@ -438,14 +507,18 @@ Diesen können wir das Quadrat-Programm einsetzen:
 )
 ```
 
-### Geschachtelte Befehle
+Das Ergebnis ist wieder das Quadrat.
+Aber als mathematisch herausgeforderte Leser müssen wir nicht im Kopf
+oder mit einem Taschenrechner ausrechnen, wie groß der Winkel ist.
 
-Die Befehle `wiederhole` und `drehe` gehen mit ihren Argumenten
+### Geschachtelte Anweisungen
+
+Die Anweisungen `wiederhole` und `drehe` gehen mit ihren Argumenten
 unterschiedlich um.
 
-Beim Befehl `drehe` (und auch bei vielen anderen Befehlen) kann man
-annehmen, dass geschachtelte Befehle ausgeführt werden, *bevor* der
-eigentliche Befehl ausgeführt wird.
+Bei der Anweisung `drehe` (und auch bei vielen anderen Anweisungen)
+können wir annehmen, dass geschachtelte Anweisungen ausgeführt werden,
+*bevor* die eigentliche Anweisung ausgeführt wird.
 
 Der Befehl `drehe` sieht also keine Division als Argument, sondern
 nur das Ergebnis: die Zahl $90$.
@@ -455,7 +528,7 @@ Zu diesen *Spezial-Formen* gehört auch `wiederhole`.
 `wiederhole` sieht die übergebenen Befehle und führt sie so oft aus,
 wie nötig ist.
 
-Woran kann man Befehle von Spezial-Formen unterscheiden?
+Woran können wir Befehle von Spezial-Formen unterscheiden?
 Leider gibt es keine klare Regel.
 Wenn ein Befehl nicht als Spezial-Form benannt wird, dann wird es sich
 hoffentlich um einen normalen Befehl handeln.
@@ -484,7 +557,7 @@ Vorher habe ich geschrieben, dass sich Yoshi auch um ein Vielfaches von
 $\ang{360}$ drehen kann.
 Probieren wir das aus, indem sich Yoshi zweimal um $\ang{360}$ dreht.
 
-Angenommen, wir wissen nicht, dass $2\cdot 360=720$ ist.
+Angenommen, wir wissen nicht, dass $2\cdot\ang{360}=\ang{720}$ ist.
 Dann können wir auch Yoshi wieder mit der Aufgabe betrauen.
 
 Hier ist das neue Programm:
@@ -564,10 +637,10 @@ Das folgende Programm zeichnet ein Rechteck:
 ```
 
 1. Wie kann es mit `wiederhole` vereinfacht werden?
-2. Zeichne die Rose aus Aufgabe 3 mit einem Rechteck anstatte einem
+2. Zeichne die Rose aus Aufgabe 3 mit einem Rechteck anstatt einem
    Quadrat.
 
-## Sachen benennnen
+## Sachen benennen
 
 Bisher können wir schon recht komplexe Grafiken mit wenigen Zeilen Code
 zeichnen lassen.
@@ -589,8 +662,9 @@ Und einmal um den korrekten Winkel zu berechnen.
 
 Wie sähe ein allgemeines Programm aus, um einen Polyeder zu zeichnen?
 
-Das folgende Programm definiert eine Funktion `poly` und verwendet sie
-danach wie die eingebauten Befehle `markiere`, `drehe` oder `+`:
+Das folgende Programm definiert eine *Funktion* `poly` und verwendet sie
+danach in einer Anweisung wie die eingebauten Funktionen `markiere`,
+`drehe` oder `+`:
 
 ```lisp
 (def-fn poly (n)
@@ -613,8 +687,6 @@ Alle weiteren Argumente werden beim Aufruf der Funktion ausgeführt.
 
 Yoshi verwendet eine *funktionale Programmiersprache*, die an die
 Programmiersprache LISP angelehnt ist.
-Daher werden Funktionen in der weiteren Betrachtung einen wichtigen Teil
-einnehmen.
 
 Auch wenn LISP schon ein paar Tage auf dem Buckel hat
 (die Sprache wurde bereits $1958$ spezifiziert),
@@ -626,13 +698,14 @@ C++, aber auch moderne Sprachen wie Haskell, Scala oder Clojure.
 
 ### Funktionsaufruf sezieren
 
-Betrachten wir Schritt für Schritt, was bei einem Methoden-Aufruf
-passiert.
+Betrachten wir Schritt für Schritt, was bei einem Ausführen einer
+Anweisung passiert.
 Dies sind nicht genau die gleichen Schritte, die ein Rechner durchführt,
-aber sie sind einfacher zu erkläre und führen zum gleichen Ergebnis.
+aber sie sind einfacher zu erklären und führen zum gleichen Ergebnis.
 
-Nehmen wir den Aufruf `(poly 5)`.
-Man kann den Aufruf durch die Kommandos der Funktion ersetzen.
+Nehmen wir die Anweisung `(poly 5)`.
+Wir können die Anweisung durch die Anweisungen aus der Definition der
+Funktion ersetzen.
 Dabei muss das Argument `n` immer durch den Wert `5` ersetzen.
 Damit ergibt sich:
 
@@ -659,7 +732,7 @@ erhalten:
 (drehe (/ 360 5))
 ```
 
-Und wenn die Division ausgeführt wurde bleibt folgendes übrig:
+Und wenn die Division fünfmal ausgeführt wurde bleibt folgendes übrig:
 
 ```lisp
 (markiere 15)
@@ -708,17 +781,17 @@ Es entsteht folgendes Bild:
 
 !(imgs/3-pentas.pdf)
 
-Hier sieht man einen zweiten Vorteil der Funktion:
+Hier sehen wir einen zweiten Vorteil der Funktion:
 Eine Funktion zu schreiben und einmal aufzurufen, sieht nach zusätzlichem
 Aufwand ohne klaren Nutzen aus.
 Aber sobald die Funktion mehrfach aufgerufen wird, reduziert sich die
-Programmgröße erheblich.
+Programmgröße manchmal erheblich.
 
 Eine Funktion ist nicht nur ein Element, um Programme besser zu
 strukturieren, sondern reduziert bei richtiger Anwendung auch deren Größe
 und Komplexität.
 
-Den Aufruf `(poly 5 10)` kann man sich wieder als eine sehr kompakte
+Den Aufruf `(poly 5 10)` können wir uns als eine sehr kompakte
 Schreibweise von
 
 ```lisp
@@ -729,7 +802,8 @@ Schreibweise von
 ```
 
 vorstellen.
-Mit den oben beschriebenen weiteren Vereinfachungen.
+Wie oben beschrieben kann auch die `wiederhole`-Anweisung
+auseinander gerollt werden.
 
 Doch warum bei zwei aufhören.
 Mit einem weiteren Parameter `r` können wir angeben, wie oft sich
@@ -779,7 +853,7 @@ Wir können natürlich mehrere Funktionen schreiben:
 (std-poly 4)
 ```
 
-Noch einfacher wird das Programm, wenn man erkennt, das die zweite und
+Noch einfacher wird das Programm, wenn wir erkennen, das die zweite und
 dritte Funktion nur ein Sonderfall der anderen ist:
 
 ```lisp
@@ -825,25 +899,33 @@ Im nächsten Schritt ergibt sich:
 )
 ```
 
+Mit dem Ersetzen der Wiederholung ergibt sich:
+
+```lisp
+(markiere 20)
+(drehe (/ (* 1 360) 4))
+(markiere 20)
+(drehe (/ (* 1 360) 4))
+(markiere 20)
+(drehe (/ (* 1 360) 4))
+(markiere 20)
+(drehe (/ (* 1 360) 4))
+```
+
 Das Ersetzen der Multiplikation ergibt:
 
 ```lisp
-(wiederhole 4
-	(markiere 20)
-	(drehe (/ 360 4))
-)
+(markiere 20)
+(drehe (/ 360 4))
+(markiere 20)
+(drehe (/ 360 4))
+(markiere 20)
+(drehe (/ 360 4))
+(markiere 20)
+(drehe (/ 360 4))
 ```
 
-Das Ausrechnen der Division ergibt:
-
-```lisp
-(wiederhole 4
-	(markiere 20)
-	(drehe 90)
-)
-```
-
-Und mit dem Ersetzen der Wiederholung ergibt sich:
+Und das Ausrechnen der Division ergibt:
 
 ```lisp
 (markiere 20)
@@ -860,10 +942,45 @@ Nicht immer macht es Sinn, alle diese Schritte im Kopf durchzuführen.
 Aber gerade am Anfang hilft es ungemein, um zu verstehen, wie ein
 Funktionsaufruf funktioniert.
 
+### Geschwindigkeit
+
+Wenn eine Anweisung eine Spezial-Form ist, muss wie im obigen Fall
+erst diese Form aufgelöst werden, bevor die Argumente weiter
+vereinfacht werden.
+Das ist auch das Vorgehen des Rechners.
+
+Er muss also im Beispiel fünf Multiplikationen und Divisionen
+durchführen.
+Obwohl immer mit den gleichen Werten gerechnet wird.
+
+Das ist ein wichtiges Problem beim Programmieren: die *Effizienz* oder
+auch *Geschwindigkeit* des Programms.
+In unserem Beispiel ist es unerheblich, ob eine oder fünf Divisionen
+durchgeführt werden. Wenn `wiederhole` jedoch als erstes Argument
+$100{.}000{.}000$ hat, dann kann es schon einen Unterschied machen.
+
+Viele Programme sind leider viel langsamer als sie eigentlich sein
+müssten.
+Oftmals entscheiden sich die Hersteller lieber langsamere Programme
+zu veröffentlichen, als die Programmierer länger an ihren Programmen
+arbeiten zu lassen.
+Damit können die Programme billiger angeboten werden.
+
+Und wenn sie bei der Kundin zu langsam sind, kann sie sich ja einen
+schnelleren Rechner kaufen.
+
+Oft ist es gar nicht schwierig, ein Programm schneller zu machen.
+
+Oft macht es aber auch keinen Sinn, da das Programm schon schnell
+genug ist.
+
+Trotzdem werden wir weiterhin ein Auge auf die Geschwindigkeit
+werfen.
+
 ### Wieso sind die Klammern so komisch?
 
 In anderen Programmiersprachen und auch in der Mathematik werden
-*Funktionen* oft anders geschrieben, als bei Yoshis Anweisungen.
+Funktionsaufrufe oft anders geschrieben, als Yoshis Anweisungen.
 Um zwei Zahlen zu dividieren, wird in der Mathematik oft die
 *Infix-Notation* verwendet: $3/5$.
 
@@ -871,7 +988,7 @@ Infix bedeutet, dass der *Operator* zwischen den *Argumenten* steht.
 Der Operator ist hier $/$ und zeigt an, dass es sich um eine Division
 handelt. Die Argumente dieser Division sind $3$ und $5$.
 
-Auch in vielen Programmiersprachen kann man einfach `3 / 5` schreiben.
+Auch in vielen Programmiersprachen können wir einfach `3 / 5` schreiben.
 
 Nicht so bei Yoshi: Hier muss `(/ 3 5)` geschrieben werden.
 Es handelt sich hierbei um eine Präfix-Notation, wie sie in der
@@ -886,6 +1003,8 @@ Auch mehr als zwei Argumente funktionieren:
 (+ 2)
 (+ 2 3 5 7)
 ```
+
+`(+)` liefert übrigens $0$ zurück.
 
 Andere Sprachen schreiben den Operator vor die Klammern und trennen
 die Argumente mit Kommata.
@@ -902,7 +1021,7 @@ sein.
 
 Die leere Liste `()` ist kein gültiger Funktionsaufruf.
 
-Als weiterer Vorteil muss sich weder der Rechner noch der Anwender
+Als weiterer Vorteil muss sich weder der Rechner noch die Anwenderin
 um Punkt-Vor-Strich-Rechnung kümmern.
 Oder ganz allgemein darum, in welcher Reihenfolge Infix-Operatoren
 ausgeführt werden.
@@ -915,7 +1034,7 @@ Das Ergebnis ist $11$ und nicht $20$.
 Aber auch dem Rechner muss es beigebracht werden.
 Mit der Präfix-Schreibweise wird der kann die erste Form gar nicht
 hingeschrieben werden.
-Man muss sich direkt für eine der beiden Varianten entscheiden:
+Wir müssen uns direkt für eine der beiden Varianten entscheiden:
 
 ```lisp
 (+ 3 (* 2 4))
@@ -940,14 +1059,14 @@ Und da im Browser erst die Grafiken neu gezeichnet werden, nachdem das
 Programm beendet wurde, macht ein solches Programm keinen Sinn.
 Es handelt sich vielmehr um einen Programmierfehler.
 
-### Sichtbarkeit von Bezeichnern
+### Sichtbarkeit von Namen
 
-Bisher sind die unterschiedlichsten Bezeichner vorgekommen.
+Bisher sind die unterschiedlichsten *Bezeichner* vorgekommen.
 Ein paar Beispiele sind `markiere`, `wiederhole`, `+`, `n`.
 
-Hinter einem Bezeichner versteckte sich entweder eine Funktion (bei
-`markiere` und `+`), eine Spezial-Form (bei `wiederhole`) oder eine
-Zahl (bei `n`).
+Ein Bezeichner ist entweder der Name einer Funktion (bei
+`markiere` und `+`), der Name einer Spezial-Form (bei `wiederhole`) oder
+ein Platzhalter für eine Zahl (bei `n`).
 
 Jedoch sind nicht alle Bezeichner immer gültig.
 
@@ -986,7 +1105,8 @@ Folgendes Programm macht keinen Sinn:
 ```
 
 Bei der Ausführung kommt eine Fehlermeldung, das die Funktion `poly`
-nicht bekannt ist.
+zum Zeitpunkt der Anweisung nicht bekannt ist.
+Sie wird erst danach definiert.
 
 Die Verwendung von `n` ist noch eingeschränkter: es kann nur innerhalb
 der Definition der Funktion verwendet werden.
@@ -999,14 +1119,32 @@ können sie `n` verwenden.
 Nach dem Aufruf der Funktion ist `n` nicht mehr sichtbar und kann nicht
 mehr verwendet werden.
 
-Man kann sich das mit einem Stapel Kisten vorstellen.
+Wir können uns das mit einem Stapel Kisten vorstellen.
 Zu Beginn gibt es nur eine Kiste.
 In der sind alle Spezial-Formen und alle globalen Funktionen abgelegt.
+
+```gv
+graph {
+	node [shape=box]
+	"def-fn, wiederhole,
+markiere, drehe"
+}
+```
 
 Wenn mit `def-fn` eine neue Funktion definiert wird, dann wird diese
 Funktion in die oberste Kiste des Stapels abgelegt.
 
 Um zu einem Bezeichner den entsprechenden Wert oder die passende Funktion
+
+```gv
+graph {
+	node [shape=box]
+	"def-fn, wiederhole,
+markiere, drehe,
+poly"
+}
+```
+
 zu finden, wird in der obersten Kiste nachgesehen.
 Gibt es dort einen Treffer, so wird er zurück geliefert.
 Andernfalls wird in der darunter liegenden Kiste nachgesehen.
@@ -1015,11 +1153,38 @@ Und so weiter.
 Bei einem Funktionsaufruf passiert nun etwas Komisches: 
 Zuerst wird für jedes Argument der Wert ermittelt.
 Dafür wird der aktuelle Stapel zu Rate gezogen.
+Die oberste Kiste muss zu diesem Moment nicht mehr die Kiste sein,
+in der die Funktion definiert wurde.
+
+
+```gv
+digraph {
+	edge [style="invis"]
+	node [shape=box]
+	"irgendwas" ->
+	"def-fn, wiederhole,
+markiere, drehe,
+poly"
+}
+```
+
 Dann werden viele Kisten zur Seite gestellt, bis die oberste Kiste die
 Definition der Funktion enthält.
 Darauf wird eine neue Kiste gestellt.
 In diese Kiste kommt ein Eintrag für jedes Argument, welches für den
 Argument-Namen den beim Aufruf ermittelten Wert ablegt.
+
+```gv
+digraph {
+	edge [style="invis"]
+	node [shape=box]
+	"n" ->
+	"def-fn, wiederhole,
+markiere, drehe,
+poly"
+}
+```
+
 Mit diesem Stapel werden die Kommandos der Funktion abgearbeitet.
 
 Zum Ende des Funktionsaufrufs werden die neu angelegten Kisten wieder
@@ -1027,6 +1192,17 @@ entfernt.
 Die oberste Kiste enthält nun wieder die Definition der Funktion.
 Die zur Seite gestellten Kisten kommen wieder oben auf den Stapel.
 Nun sieht der Stapel wieder so aus, wie beim Aufruf der Funktion.
+
+```gv
+digraph {
+	edge [style="invis"]
+	node [shape=box]
+	"irgendwas" ->
+	"def-fn, wiederhole,
+markiere, drehe,
+poly"
+}
+```
 
 Nehmen wir das folgende Programm:
 
@@ -1493,5 +1669,20 @@ ausgeführt, sofern er vorhanden ist.
 
 ### Vergleichs-Operatoren
 
+`(< 2 3)` prüft, ob das erste Argument kleiner als das zweite Argument
+ist.
+Die Funktion muss mit zwei Zahlen als Argumenten aufgerufen werden.
+
+`(> 2 3)` prüft, ob das erste Argument größer als das zweite Argument
+ist.
+Die Funktion muss mit zwei Zahlen als Argumenten aufgerufen werden.
+
 ### Funktionen definieren
 
+`(def-fn name (arg1 ...) f1 ...)` definiert die neue Funktion `name`.
+Diese muss mit sovielen Argumenten aufgerufen werden, wie in der Liste
+hinter `name` angegeben sind.
+
+Beim Aufruf werden die Argumente `arg1` und folgend mit den Werten des
+Aufrufs gefüllt.
+Danach werden die Funktionsaufrufe `f1` und folgend aufgerufen.

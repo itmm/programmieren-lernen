@@ -1,0 +1,4 @@
+digraph G {
+	"Programmiererin" -> "Wissen"
+	"Wissen" -> "Maschine"
+}
