@@ -118,10 +118,22 @@ verwendet werden kann.
 Aber JavaScript hat so seine Tücken.
 Es wird leichter sein, mit einer einfacheren Sprache anzufangen.
 
+```gv
+digraph G {
+	"Programmierer[in]" -> "Programm"
+}
+```
+
 Als drittes Element gibt es noch die *Maschine*, welche ein
 Programm ausführt.
 Das kann ein Computer sein.
 Muss es aber nicht.
+
+```gv
+digraph G {
+	"Maschine" -> "Programm"
+}
+```
 
 Das folgenden Beispiel zeigt, wie man schon um 1900 ein Programm
 ganz ohne Elektronik schreiben und ausführen konnte.
