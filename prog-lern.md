@@ -1031,10 +1031,11 @@ So ist erst einmal nicht klar, ob `3 + 2 * 4` eigentlich
 Wer in der Schule aufgepasst hat, wird die zweite Version verwerfen.
 Das Ergebnis ist $11$ und nicht $20$.
 
-Aber auch dem Rechner muss es beigebracht werden.
-Mit der Präfix-Schreibweise wird der kann die erste Form gar nicht
+Aber auch dem Rechner müssen diese Regeln beigebracht werden.
+Mit der Präfix-Schreibweise kann die erste Form gar nicht
 hingeschrieben werden.
-Wir müssen uns direkt für eine der beiden Varianten entscheiden:
+Die Mehrdeutigkeit wird vermieden und wir müssen uns direkt für eine der
+beiden Varianten entscheiden:
 
 ```lisp
 (+ 3 (* 2 4))
