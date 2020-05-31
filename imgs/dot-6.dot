@@ -1,8 +1,5 @@
-digraph {
-	edge [style="invis"]
+graph {
 	node [shape=box]
-	"irgendwas" ->
 	"def-fn, wiederhole,
-markiere, drehe,
-poly"
+markiere, drehe"
 }

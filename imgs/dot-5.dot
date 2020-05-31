@@ -1,6 +1,10 @@
-graph {
-	node [shape=box]
-	"def-fn, wiederhole,
-markiere, drehe,
-poly"
+digraph G {
+	node [shape=record];
+	call [label="<f0> (|<f1> a|<f2> b|<f3> )"];
+	node [shape=egg];
+	edge [dir=back];
+	call:f0 -> "Beginn";
+	call:f1 -> "1. Element";
+	call:f2 -> "2. Element";
+	call:f3 -> "Ende";
 }

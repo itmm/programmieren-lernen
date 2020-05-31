@@ -13,15 +13,15 @@ mystifiziert die gesamte Szene.
 Leise klirren indische Klang-Schalen kreuz und quer, ohne sich
 verorten zu lassen.
 
-Ein Mann in langem Mantel steht auf einmal mitten im Raum.
-Niemand hat ihn kommen sehen.
-Auf dem Mantel sind mit goldenen Fäden Symbole aus unterschiedlichen
-Schrift-Systemen aufgestickt.
+Eine Frau steht auf einmal mitten im Raum.
+Niemand hat sie kommen sehen.
+Auf ihrem langen Kleid sind mit goldenen Fäden Symbole aus
+unterschiedlichen Schrift-Systemen aufgestickt.
 Wenn etwas nach einem bekannten lateinischen Buchstaben aussieht,
 dann ist es sicherlich ein griechisches, kyrillisches oder ganz
 anderes Symbol.
 
-Der Mann breitet langsam die Arme aus.
+Die Frau breitet langsam ihre Arme aus.
 Gleichzeitig verändert sich der Raum.
 Die Temperatur sinkt.
 Das Licht nimmt sich zurück.
@@ -29,24 +29,24 @@ Nur eine gelbe Lichtsäule bildet sich um den Magier.
 
 Wo vorher noch unbestimmte Leere war, leuchtet nun ein Pentagramm
 auf dem groben Felsboden.
-In dessen Mitte steht der Zauberkundige.
+In dessen Mitte steht die Zauberkundige.
 
-Er murmelt kaum verständlich eine Beschwörungsformel in einer
+Sie murmelt kaum verständlich eine Beschwörungsformel in einer
 fremden Sprache.
 Teile erinnern an Latein.
-Dabei bewegen sich seine Finger als wären sie zu einem eigenen,
+Dabei bewegen sich ihre Finger als wären sie zu einem eigenen,
 unabhängigen Leben erwacht und erkunden wie frisch geschlüpfte
 Küken die große Welt.
 
-Ruckartig senkt er die Arme.
+Ruckartig senkt sie die Arme.
 Ein Donnerschlag dröhnt durch die Halle.
-Ein kleiner Bistro-Tisch steht wie aus dem Nichts vor ihm.
+Ein kleiner Bistro-Tisch steht wie aus dem Nichts vor ihr.
 Auf diesem liegen dampfende Papp-Kartons.
 
 „Bitte nehmen Sie sich, Ihre Pizza. Ich hoffe, der Tag hat Ihnen
 gefallen.“
 
-Mit einer knappen Verbeugung verabschiedet sich der Künstler und
+Mit einer knappen Verbeugung verabschiedet sich die Künstlerin und
 verläßt das Gewölbe, in dem eine Management-Schulung zu ihrem
 Abschluß gekommen ist.
 
@@ -56,7 +56,7 @@ Ja und?
 Was hat das alles mit Programmieren zu tun?
 Eine Menge!
 
-Für den Außenstehenden wirkt Programmieren wie Magie.
+Für die Außenstehenden wirkt Programmieren wie Magie.
 Programmierkundige können seelenlose Maschinen zum Leben erwecken.
 Durch die zunehmende Vernetzung werden die Programme scheinbar
 allwissend.
@@ -64,9 +64,9 @@ allwissend.
 Wie ein böser Dämon müssen sie von ihrem Meister gebändigt und in
 Zaum gehalten werden.
 
-Aber gleichzeitig ist das Programmieren für erfahrene Programmierer
+Aber gleichzeitig ist das Programmieren für erfahrene Programmiererinnen
 eben keine Hexerei.
-So wie auch ein Zauberkünstler keine echte Magie braucht, um seine
+So wie auch eine Zauberkünstlerin keine echte Magie braucht, um ihre
 Kunststücke vorzuführen.
 
 Dieses Buch ist der erste Schritt einer Anleitung zum Programmieren.
@@ -351,15 +351,35 @@ Sehen wir uns das Programm genauer an:
 ```
 
 Das Programm besteht aus sechs Anweisungen.
-Jede Anweisung beginnt mit `(` und endet mit `)`.
+Jede Anweisung ist ein Funktions-Aufruf.
+Sie beginnt mit `(` und endet mit `)`.
 
 Yoshi arbeitet der Reihe nach alle Anweisungen ab.
 Wenn er eine Anweisung nicht versteht, dann gibt es eine
 *Fehlermeldung*.
 
-Das erste Wort in der Anweisung ist der *Name* der Anweisung.
+Das erste Wort in einem Funktions-Aufruf ist der *Name* der Funktion.
 Er sagt Yoshi, was für eine Aktion er ausführen soll.
 Im ersten Programm gibt es nur die Namen `markiere` und `drehe`.
+
+Das zweite Argument im Funktions-Aufruf ist ein Argument der Funktion.
+Es beschreibt genauer, was für eine Aktion ausgeführt werden soll.
+Im ersten Programm werden nur Funktionen aufgerufen, die ein Argument
+haben.
+Allgemein kann aber eine Funktion auch mehr oder weniger Argumente haben.
+
+```GV
+digraph G {
+	node [shape=record];
+	call [label="<f0> (|<f1> markiere|<f2> 20|<f3> )"];
+	node [shape=egg];
+	edge [dir=back];
+	call:f0 -> "Beginn";
+	call:f1 -> "Name";
+	call:f2 -> "Argument";
+	call:f3 -> "Ende";
+}
+```
 
 Die erste Anweisung `(markiere 20)` fordert die Schildkröte auf,
 zwanzig Schritte in die aktuelle Richtung zu laufen.
@@ -373,6 +393,29 @@ Die nächste Linie fährt also in einem spitzen Winkel in diese Richtung.
 Nach insgesamt drei Markierungen und Drehungen steht Yoshi wieder
 auf seinem Startpunkt und blickt wieder nach oben.
 Zusätzlich hat er aber ein Dreieck gezeichnet.
+
+Ein Funktions-Aufruf ist eine spezielle Form einer *Liste*.
+Die Elemente einer Liste werden immer mit Leerzeichen getrennt und
+in Klammern eingeschlossen:
+
+```GV
+digraph G {
+	node [shape=record];
+	call [label="<f0> (|<f1> a|<f2> b|<f3> )"];
+	node [shape=egg];
+	edge [dir=back];
+	call:f0 -> "Beginn";
+	call:f1 -> "1. Element";
+	call:f2 -> "2. Element";
+	call:f3 -> "Ende";
+}
+```
+
+Funktions-Aufrufe sind Listen, die als erstes Element die aufzurufende
+Funktion haben.
+Nur Funktions-Aufrufe sind als Anweisungen erlaubt.
+Die Liste `(1 2)` ist keine erlaubte Anweisung.
+Auch die *leere Liste* `()` ist keine erlaubte Anweisung.
 
 ### Ein Quadrat zeichnen
 
@@ -667,7 +710,7 @@ danach in einer Anweisung wie die eingebauten Funktionen `markiere`,
 `drehe` oder `+`:
 
 ```lisp
-(def-fn poly (n)
+(def (poly n)
 	(wiederhole n
 		(markiere 15)
 		(drehe (/ 360 n))
@@ -680,10 +723,12 @@ Der Funktion wird ein Parameter `n` übergeben.
 Innerhalb des Funktionsaufrufs wird `n` dann durch den konkreten Wert
 `5` ersetzt, mit dem die Funktion aufgerufen wurde.
 
-Allgemein definiert die Spezial-Form `def-fn` eine neue Funktion.
-Der Name der Funktion ist das erste Argument.
-Eine Liste mit Argumenten der Funktion ist das zweite Argument.
-Alle weiteren Argumente werden beim Aufruf der Funktion ausgeführt.
+Allgemein definiert die Spezial-Form `def` eine neue Funktion.
+Das erste Argument ist eine *Signatur* der Funktion.
+Die Signatur besteht aus dem Namen der Funktionen und ein Bezeichner
+für jedes Argument, mit dem die Funktion aufgerufen wird.
+Alle weiteren Argumente von `def` werden beim Aufruf der Funktion
+ausgeführt.
 
 Yoshi verwendet eine *funktionale Programmiersprache*, die an die
 Programmiersprache LISP angelehnt ist.
@@ -766,7 +811,7 @@ Ein neues Programm kann so aussehen:
 
 
 ```lisp
-(def-fn poly (n l)
+(def (poly n l)
 	(wiederhole n
 		(markiere l)
 		(drehe (/ 360 n))
@@ -810,7 +855,7 @@ Mit einem weiteren Parameter `r` können wir angeben, wie oft sich
 Yoshi um die eigene Achse drehen soll:
 
 ```lisp
-(def-fn poly (n l r)
+(def (poly n l r)
 	(wiederhole n
 		(markiere l)
 		(drehe (/ (* r 360) n))
@@ -830,19 +875,19 @@ Aber eben nicht immer.
 Wir können natürlich mehrere Funktionen schreiben:
 
 ```lisp
-(def-fn poly (n l r)
+(def (poly n l r)
 	(wiederhole n
 		(markiere l)
 		(drehe (/ (* r 360) n))
 	)
 )
-(def-fn poly-1 (n l)
+(def (poly-1 n l)
 	(wiederhole n
 		(markiere l)
 		(drehe (/ 360 n))
 	)
 )
-(def-fn std-poly (n)
+(def (std-poly n)
 	(wiederhole n
 		(markiere 20)
 		(drehe (/ 360 n))
@@ -857,16 +902,16 @@ Noch einfacher wird das Programm, wenn wir erkennen, das die zweite und
 dritte Funktion nur ein Sonderfall der anderen ist:
 
 ```lisp
-(def-fn poly (n l r)
+(def (poly n l r)
 	(wiederhole n
 		(markiere l)
 		(drehe (/ (* r 360) n))
 	)
 )
-(def-fn poly-1 (n l)
+(def (poly-1 n l)
 	(poly n l 1)
 )
-(def-fn std-poly (n)
+(def (std-poly n)
 	(poly-1 n 20)
 )
 (poly 4 10 1)
@@ -1074,7 +1119,7 @@ Jedoch sind nicht alle Bezeichner immer gültig.
 Betrachten wir das Programm
 
 ```lisp
-(def-fn poly (n)
+(def (poly n)
 	(wiederhole n
 		(markiere 20)
 		(drehe (/ 360 n))
@@ -1097,7 +1142,7 @@ Folgendes Programm macht keinen Sinn:
 
 ```lisp
 (poly 3)
-(def-fn poly (n)
+(def (poly n)
 	(wiederhole n
 		(markiere 20)
 		(drehe (/ 360 n))
@@ -1208,13 +1253,13 @@ poly"
 Nehmen wir das folgende Programm:
 
 ```lisp
-(def-fn poly (n)
+(def (poly n)
 	(wiederhole n
 		(markiere 15)
 		(drehe (/ 360 n))
 	)
 )
-(def-fn poly+1 (n)
+(def (poly+1 n)
 	(poly (+ 1 n))
 )
 (poly+1 4)
@@ -1255,8 +1300,8 @@ mit den üblichen Fortführungen.
 Funktionen können auch in einer Funktion definiert werden.
 
 ```lisp
-(def-fn poly (n)
-	(def-fn geh-dreh ()
+(def (poly n)
+	(def (geh-dreh)
 		(markiere 20)
 		(drehe (/ 360 n))
 	)
@@ -1276,8 +1321,8 @@ einzuführen.
 Eine andere Definition von `poly` wäre:
 
 ```lisp
-(def-fn poly (n)
-	(def-fn inner (w)
+(def (poly n)
+	(def (inner w)
 		(wiederhole n
 			(markiere 20)
 			(drehe w)
@@ -1291,7 +1336,7 @@ Eine andere Definition von `poly` wäre:
 Dieses Programm ist komplizierter, als die ursprüngliche Version:
 
 ```lisp
-(def-fn poly (n)
+(def (poly n)
 	(wiederhole n
 		(markiere 20)
 		(drehe (/ 360 n))
@@ -1318,9 +1363,9 @@ werden.
 Gegeben ist folgendes Programm:
 
 ```lisp
-(def-fn std-poly (n)
-	(def-fn poly-1 (l)
-		(def-fn poly (r)
+(def (std-poly n)
+	(def (poly-1 l)
+		(def (poly r)
 			(wiederhole n
 				(markiere l)
 				(drehe (/ (* r 360) n))
@@ -1343,8 +1388,8 @@ Gegeben ist folgendes Programm:
 Gegeben sind die Programme
 
 ```lisp
-(def-fn poly (n)
-	(def-fn inner (w)
+(def (poly n)
+	(def (inner w)
 		(wiederhole n
 			(markiere 20)
 			(drehe w)
@@ -1358,8 +1403,8 @@ Gegeben sind die Programme
 und
 
 ```lisp
-(def-fn poly (n)
-	(def-fn inner (n w)
+(def (poly n)
+	(def (inner n w)
 		(wiederhole n
 			(markiere 20)
 			(drehe w)
@@ -1383,10 +1428,10 @@ ausgeführt wird.
 Betrachten wird das folgende Programm:
 
 ```lisp
-(def-fn winkel (n)
+(def (winkel n)
 	(/ 360 n)
 )
-(def-fn poly (n)
+(def (poly n)
 	(wiederhole n
 		(markiere 20)
 		(drehe (winkel n))
@@ -1402,8 +1447,8 @@ Der Parameter von `winkel` kann vermieden werden, wenn wir die Funktion
 als innere Funktion verwenden:
 
 ```lisp
-(def-fn poly (n)
-	(def-fn winkel ()
+(def (poly n)
+	(def (winkel)
 		(/ 360 n)
 	)
 	(wiederhole n
@@ -1417,11 +1462,11 @@ als innere Funktion verwenden:
 Nehmen wir gleich eine weitere Funktion für die Kantenlänge:
 
 ```lisp
-(def-fn poly (n)
-	(def-fn winkel ()
+(def (poly n)
+	(def (winkel)
 		(/ 360 n)
 	)
-	(def-fn länge ()
+	(def (länge)
 		20
 	)
 	(wiederhole n
@@ -1444,12 +1489,12 @@ $l\leq 20\cdot\pi /n$.
 Das können wir einbauen:
 
 ```lisp
-(def-fn poly (n)
-	(def-fn winkel ()
+(def (poly n)
+	(def (winkel)
 		(/ 360 n)
 	)
-	(def-fn länge ()
-		(/ (* 20 3.142) n)
+	(def (länge)
+		(/ (* 20 3,142) n)
 	)
 	(wiederhole n
 		(markiere (länge))
@@ -1465,14 +1510,14 @@ Zur Optimierung kann der Aufruf von `winkel` und `länge` auch nur
 einmal erfolgen:
 
 ```lisp
-(def-fn poly (n)
-	(def-fn winkel ()
+(def (poly n)
+	(def (winkel)
 		(/ 360 n)
 	)
-	(def-fn länge ()
-		(/ (* 20 3.142) n)
+	(def (länge)
+		(/ (* 20 3,142) n)
 	)
-	(def-fn inner (w l)
+	(def (inner w l)
 		(wiederhole n
 			(markiere l)
 			(drehe w)
@@ -1494,32 +1539,32 @@ Es gab keine Abweichungen vom Plan und keine Umwege.
 Aber die daraus resultierenden Programme sind nicht sehr mächtig.
 
 ```lisp
-(def-fn log (l)
+(def (log l)
 	(markiere l)
 	(drehe 50)
-	(wenn (> (abs (x-koord)) 25)
-		nil
-		(log (* l 1.2))
+	(falls
+		((> (abs (x-koord)) 25))
+		(1 (log (* l 1,2)))
 	)
 )
 (log 5)
 ```
 
 ```lisp
-(def-fn id (x) x)
-(def-fn mul-1.2 (x) (* x 1.2))
-(def-fn loop (l w up-l up-w)
+(def (id x) x)
+(def (mul-1,2 x) (* x 1,2))
+(def (loop l w up-l up-w)
 	(markiere l)
 	(drehe w)
-	(wenn (> (abs (x-koord)) 25)
-		nil
-		(loop
+	(falls
+		((> (abs (x-koord)) 25))
+		(1 (loop
 			(up-l l) (up-w w)
 			up-l up-w
-		)
+		))
 	)
 )
-(loop 5 50 mul-1.2 id)
+(loop 5 50 mul-1,2 id)
 ```
 
 ## Funktionen als Argumente
@@ -1532,8 +1577,8 @@ auch als Rückgabewerte zurück gegeben werden.
 Betrachte dazu folgendes Programm:
 
 ```lisp
-(def-fn rotate(n f)
-	(def-fn inner (w)
+(def (rotate n f)
+	(def (inner w)
 		(wiederhole n
 			(f)
 			(drehe w)
@@ -1541,8 +1586,8 @@ Betrachte dazu folgendes Programm:
 	)
 	(inner (/ 360 n))
 )
-(def-fn poly (n)
-	(def-fn mark ()
+(def (poly n)
+	(def (mark)
 		(markiere 20)
 	)
 	(rotate n mark)
@@ -1573,8 +1618,8 @@ Sachen benutzen können.
 
 
 ```lisp
-(def-fn rotate(n f)
-	(def-fn inner (w)
+(def (rotate n f)
+	(def (inner w)
 		(wiederhole n
 			(f)
 			(drehe w)
@@ -1582,11 +1627,11 @@ Sachen benutzen können.
 	)
 	(inner (/ 360 n))
 )
-(def-fn make-poly (n)
-	(def-fn mark ()
+(def (make-poly n)
+	(def (mark)
 		(markiere 15)
 	)
-	(def-fn poly ()
+	(def (poly)
 		(rotate n mark)
 	)
 	poly
@@ -1595,8 +1640,8 @@ Sachen benutzen können.
 ```
 
 ```lisp
-(def-fn rotate(n f)
-	(def-fn inner (w)
+(def (rotate n f)
+	(def (inner w)
 		(wiederhole n
 			(f)
 			(drehe w)
@@ -1604,16 +1649,16 @@ Sachen benutzen können.
 	)
 	(inner (/ 360 n))
 )
-(def-fn make-poly (n)
-	(def-fn mark ()
+(def (make-poly n)
+	(def (mark)
 		(markiere 15)
 	)
-	(def-fn poly ()
+	(def (poly)
 		(rotate n mark)
 	)
 	poly
 )
-(def-fn rose (n f)
+(def (rose n f)
 	(rotate n f)
 )
 (rose 8 (make-poly 4))
@@ -1664,7 +1709,7 @@ Wird kein Argument angegeben, so wird $1$ zurückgegeben.
 $k$-mal. $k$ ist die kleinste ganze Zahl, die nicht kleiner als `n` ist.
 Alle Argumente hinter `n` müssen Funktionsaufrufe sein.
 
-`(wenn c (t) (f))` führt den Funktionsaufruf `(t)` aus, wenn die
+`(falls (c ...)...)` führt den Funktionsaufruf `(t)` aus, wenn die
 Bedingung `c` wahr ist. Ansonsten wird der Funktionsaufruf `(f)`
 ausgeführt, sofern er vorhanden ist.
 
@@ -1680,7 +1725,7 @@ Die Funktion muss mit zwei Zahlen als Argumenten aufgerufen werden.
 
 ### Funktionen definieren
 
-`(def-fn name (arg1 ...) f1 ...)` definiert die neue Funktion `name`.
+`(def (name arg1 ...) f1 ...)` definiert die neue Funktion `name`.
 Diese muss mit sovielen Argumenten aufgerufen werden, wie in der Liste
 hinter `name` angegeben sind.
 
