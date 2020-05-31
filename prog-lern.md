@@ -87,7 +87,7 @@ Und mit etwas Geduld entstehen komplexe Gebilde, die scheinbar
 viel mächtiger sind, als die paar Zeilen Programm-Text vermuten
 lassen.
 
-Lass uns das Spiel beginnen!
+Ludi Incipiant - die Spiele mögen beginnen!
 
 ## Um was geht es?
 
@@ -115,6 +115,7 @@ Fachbereich entschlossen haben.
 Es wird grundsätzlich nur die weibliche Form verwendet!
 Und das in einem Fachbereich, der damals eine Studentinnen-Quote von
 unter $10\%$ hatte.
+Aber das ist ja schon lange her.
 
 ### Definitionen
 
@@ -190,6 +191,7 @@ Je genauer die Schritte beschrieben sind, desto einheitlicher sind
 die resultierenden Autos.
 Und desto weniger muss die Fließband-Arbeiterin in der Fabrik vom
 Auto-Bauen verstehen.
+Und daher desto weniger muss man ihr bezahlen.
 
 In unserem vereinfachten Programm sind die ersten beiden Schritte
 mit einigen Minuten anlernen ausführbar:
@@ -203,7 +205,7 @@ Maschine zum Ausführen meines Programms voraussetzen.
 
 In diesem Beispiel ist die Fabrik-Halle mit ihren Arbeiterinnen,
 Fließ-Bändern und Lackier-Robotern die Maschine, die das Programm
-„ich baue einen Polo“ ausführen kann.
+„baue einen Polo“ ausführen kann.
 
 Dazu benötigt die Fabrik zusätzliches Material als Eingabe.
 Irgendwo müssen auch die Räder und Lenkräder herkommen.
@@ -242,6 +244,7 @@ verwendet.
 Ein Algorithmus beschreibt, wie ein Programm funktioniert.
 Er ist meistens nicht in einer Programmiersprache geschrieben,
 sondern abstrakt.
+
 Ein Rechner kann einen Algorithmus nicht direkt ausführen.
 Ein Mensch kann es jedoch.
 Also ist ein Algorithmus durchaus ein Programm für die Maschine
@@ -333,11 +336,11 @@ zeichnen.
 Aber ihr muss ganz genau gesagt werden, was sie zeichnen muss.
 Aus lizenz-rechtlichen Gründen wird Yoshi selber nicht gezeichnet.
 
+Die Anweisungen müssen in der Programmiersprache *Yps* (Yoshis
+Programmiersprache) formuliert werden.
 Wenn wir auf den „Auftrag ausführen“-Knopf klicken, werden die
 Anweisungen ausgeführt.
 Das Ergebnis erscheint im rechten Feld:
-
-!(imgs/triangle.pdf)
 
 Sehen wir uns das Programm genauer an:
 
@@ -350,17 +353,32 @@ Sehen wir uns das Programm genauer an:
 (drehe 120)
 ```
 
+!(imgs/triangle.pdf)
+
 Das Programm besteht aus sechs Anweisungen.
 Jede Anweisung ist ein Funktions-Aufruf.
 Sie beginnt mit `(` und endet mit `)`.
 
 Yoshi arbeitet der Reihe nach alle Anweisungen ab.
-Wenn er eine Anweisung nicht versteht, dann gibt es eine
+Wenn er eine Anweisung nicht versteht, dann gibt es statt dessen eine
 *Fehlermeldung*.
 
 Das erste Wort in einem Funktions-Aufruf ist der *Name* der Funktion.
 Er sagt Yoshi, was für eine Aktion er ausführen soll.
-Im ersten Programm gibt es nur die Namen `markiere` und `drehe`.
+Im ersten Programm gibt es die Namen `markiere` und `drehe`.
+
+Die erste Anweisung `(markiere 20)` fordert die Schildkröte auf,
+zwanzig Schritte in die aktuelle Richtung zu laufen.
+Dabei hinterläßt sie eine Linie.
+
+Die nächste Anweisung `(drehe 120)` dreht die Schildkröte um
+$\ang{120}$ (eine Drittel-Drehung) im Uhrzeigersinn.
+Sie blickt nun nach rechts/unten.
+Die nächste Linie fährt also in einem spitzen Winkel in diese Richtung.
+
+Nach insgesamt drei Markierungen und Drehungen steht Yoshi wieder
+auf seinem Startpunkt und blickt wieder nach oben.
+Zusätzlich hat er aber ein Dreieck gezeichnet.
 
 Das zweite Argument im Funktions-Aufruf ist ein Argument der Funktion.
 Es beschreibt genauer, was für eine Aktion ausgeführt werden soll.
@@ -380,19 +398,6 @@ digraph G {
 	call:f3 -> "Ende";
 }
 ```
-
-Die erste Anweisung `(markiere 20)` fordert die Schildkröte auf,
-zwanzig Schritte in die aktuelle Richtung zu laufen.
-Dabei hinterläßt sie eine Linie.
-
-Die nächste Anweisung `(drehe 120)` dreht die Schildkröte um
-$\ang{120}$ (eine Drittel-Drehung) im Uhrzeigersinn.
-Sie blickt nun nach rechts/unten.
-Die nächste Linie fährt also in einem spitzen Winkel in diese Richtung.
-
-Nach insgesamt drei Markierungen und Drehungen steht Yoshi wieder
-auf seinem Startpunkt und blickt wieder nach oben.
-Zusätzlich hat er aber ein Dreieck gezeichnet.
 
 Ein Funktions-Aufruf ist eine spezielle Form einer *Liste*.
 Die Elemente einer Liste werden immer mit Leerzeichen getrennt und
@@ -416,6 +421,11 @@ Funktion haben.
 Nur Funktions-Aufrufe sind als Anweisungen erlaubt.
 Die Liste `(1 2)` ist keine erlaubte Anweisung.
 Auch die *leere Liste* `()` ist keine erlaubte Anweisung.
+
+Da jede Anweisung eine Liste ist, bestehen Programme in Yps immer
+aus einer oder mehrerer Listen.
+Jedes Element einer Liste kann jedoch wieder eine Liste sein.
+Dadurch können beliebig komplexe Programme entstehen.
 
 ### Ein Quadrat zeichnen
 
@@ -504,14 +514,70 @@ Ja, genau: $3$.
 Das erste Argument ist eine Zahl ($4$).
 Die beiden weiteren Argumente sind wieder Anweisungen!
 
-Die `wiederhole` Anweisung nimmt das erste Argument und führt die
+Die `wiederhole` *Spezial-Form* nimmt das erste Argument und führt die
 weiteren Argumente so oft aus, wie in dem ersten Argument angegeben
 wurde.
+Spezial-Formen unterscheiden sich von Funktionen in der Art und Weise
+wie sie mit Argumenten umgehen.
 
 Oder noch genauer: wenn erste Argument größer als $0$ ist,
 werden die weiteren Befehle ausgeführt und danach die `wiederhole`
-Anweisung erneut ausgeführt. Diesmal aber mit einem um $1$ reduzierten
+Spezial-Form erneut ausgeführt. Diesmal aber mit einem um $1$ reduzierten
 ersten Argument.
+
+Aus dem obigen Aufruf wird also zuerst
+
+```lisp
+(markiere 20)
+(drehe 90)
+(wiederhole 3
+	(markiere 20)
+	(drehe 90)
+)
+```
+
+Danach:
+
+```lisp
+(markiere 20)
+(drehe 90)
+(markiere 20)
+(drehe 90)
+(wiederhole 2
+	(markiere 20)
+	(drehe 90)
+)
+```
+
+Weiter zu:
+
+```lisp
+(markiere 20)
+(drehe 90)
+(markiere 20)
+(drehe 90)
+(markiere 20)
+(drehe 90)
+(wiederhole 1
+	(markiere 20)
+	(drehe 90)
+)
+```
+
+Und schließlich:
+
+```lisp
+(markiere 20)
+(drehe 90)
+(markiere 20)
+(drehe 90)
+(markiere 20)
+(drehe 90)
+(markiere 20)
+(drehe 90)
+```
+
+Das entspricht dem ursprünglichem Programm zum Zeichnen eines Quadrats.
 
 Anstatt $4$ können wir im Programm auch $3{,}2$ schreiben.
 Wichtig ist, dass Dezimalzahlen mit einem Komma geschrieben werden.
@@ -551,30 +617,31 @@ Diesen können wir das Quadrat-Programm einsetzen:
 ```
 
 Das Ergebnis ist wieder das Quadrat.
-Aber als mathematisch herausgeforderte Leser müssen wir nicht im Kopf
-oder mit einem Taschenrechner ausrechnen, wie groß der Winkel ist.
+Aber als mathematisch herausgeforderte Leserinnen müssen wir nicht im
+Kopf oder mit einem Taschenrechner ausrechnen, wie groß der Winkel ist.
 
 ### Geschachtelte Anweisungen
 
-Die Anweisungen `wiederhole` und `drehe` gehen mit ihren Argumenten
-unterschiedlich um.
+Die Spezial-Form `wiederhole` und die Funktion `drehe` gehen mit ihren
+Argumenten unterschiedlich um.
 
-Bei der Anweisung `drehe` (und auch bei vielen anderen Anweisungen)
+Bei der Funktion `drehe` (und auch bei allen anderen Funktionen)
 können wir annehmen, dass geschachtelte Anweisungen ausgeführt werden,
-*bevor* die eigentliche Anweisung ausgeführt wird.
+*bevor* die eigentliche Funktion ausgeführt wird.
 
 Der Befehl `drehe` sieht also keine Division als Argument, sondern
 nur das Ergebnis: die Zahl $90$.
-So funktioniert es bei fast allen Befehlen, bis auf ein paar Ausnahmen.
-Zu diesen *Spezial-Formen* gehört auch `wiederhole`.
+So funktioniert es bei fast allen Anweisungen, bis auf ein paar
+Ausnahmen: den Spezial-Formen.
+Zu diesen Spezial-Formen gehört auch `wiederhole`.
 
-`wiederhole` sieht die übergebenen Befehle und führt sie so oft aus,
-wie nötig ist.
+`wiederhole` sieht die übergebenen Befehle und führt sie unterschiedlich
+oft aus, je nach Wert des ersten Arguments.
 
-Woran können wir Befehle von Spezial-Formen unterscheiden?
+Woran können wir Funktionen von Spezial-Formen unterscheiden?
 Leider gibt es keine klare Regel.
-Wenn ein Befehl nicht als Spezial-Form benannt wird, dann wird es sich
-hoffentlich um einen normalen Befehl handeln.
+Wenn ein Name nicht als Spezial-Form benannt wird, dann wird es sich
+hoffentlich um eine normalen Funktion handeln.
 
 ### Fünfeck und Pentagramm
 
@@ -616,6 +683,14 @@ Als Ergebnis erhalten wir ein Pentagram:
 
 !(imgs/star.pdf)
 
+Anweisungen können also auch tiefer geschachtelt werden.
+Yoshi kennt keine Grenze.
+Aber irgendwann hat der Web-Browser oder der verwendete Rechner keine
+Lust mehr, wenn der Speicher knapp wird.
+Oder wenn es zu lange dauert.
+
+Aber erst einmal können wir annehmen, dass es keine Grenze gibt.
+
 ### Aufgabe 1: Modernes Dreieck
 
 Wie kann das ursprüngliche Programm
@@ -629,7 +704,7 @@ Wie kann das ursprüngliche Programm
 (drehe 120)
 ```
 
-mit `wiederholung` und Division vereinfacht werden?
+mit `wiederhole` und Division vereinfacht werden?
 
 ### Aufgabe 2: Innenwinkel
 
@@ -661,8 +736,10 @@ Welches Programm liefert das folgende Ergebnis?
 
 1. Was passiert, wenn sich Yoshi im Fünfeck-Programm dreimal oder viermal
    um $\ang{360}$ dreht?
-2. Gibt es ein Muster?
-3. Wie sieht dieses Muster beim Dreieck und beim Quadrat aus?
+2. Kann man ganz allgemein voraussagen was passiert, wenn sich Yoshi
+   $n\geq0$ mal um $\ang{360}$ dreht?
+3. Was sind ist die allgemeine Aussage für $n\geq0$ beim Dreieck und
+   beim Quadrat aus?
 
 ### Aufgabe 5: Rechteck
 
@@ -683,13 +760,13 @@ Das folgende Programm zeichnet ein Rechteck:
 2. Zeichne die Rose aus Aufgabe 3 mit einem Rechteck anstatt einem
    Quadrat.
 
-## Sachen benennen
+## Aktionen benennen
 
 Bisher können wir schon recht komplexe Grafiken mit wenigen Zeilen Code
 zeichnen lassen.
 Die Aufgabe 4: Rose gibt ein schönes Beispiel.
 
-Jedoch gibt es bei unserem Polyeder Programm noch eine unschöne
+Jedoch gibt es bei unserem Polyeder-Programm noch eine unschöne
 Wiederholung:
 
 ```lisp
@@ -705,9 +782,9 @@ Und einmal um den korrekten Winkel zu berechnen.
 
 Wie sähe ein allgemeines Programm aus, um einen Polyeder zu zeichnen?
 
-Das folgende Programm definiert eine *Funktion* `poly` und verwendet sie
+Das folgende Programm definiert eine Funktion `poly` und verwendet sie
 danach in einer Anweisung wie die eingebauten Funktionen `markiere`,
-`drehe` oder `+`:
+`drehe` oder `/`:
 
 ```lisp
 (def (poly n)
@@ -719,16 +796,30 @@ danach in einer Anweisung wie die eingebauten Funktionen `markiere`,
 (poly 5)
 ```
 
-Der Funktion wird ein Parameter `n` übergeben.
+Der Funktion wird ein Argument `n` übergeben.
 Innerhalb des Funktionsaufrufs wird `n` dann durch den konkreten Wert
 `5` ersetzt, mit dem die Funktion aufgerufen wurde.
 
 Allgemein definiert die Spezial-Form `def` eine neue Funktion.
-Das erste Argument ist eine *Signatur* der Funktion.
+Das erste Argument ist die *Signatur* der Funktion.
 Die Signatur besteht aus dem Namen der Funktionen und ein Bezeichner
 für jedes Argument, mit dem die Funktion aufgerufen wird.
+Aus der Signatur geht hervor, wie die Funktion heißt und wie viele
+Argumente sie erwartet.
+
+Durch die Signatur wird sowohl die Funktion, als auch die Argumente
+benannt.
+Zum Aufruf der Funktion wird nur der Name der Funktion benötigt.
+Oft kann man mit sinnvoll gewählten Namen die Funktionen und Argumente
+beschreiben.
+
 Alle weiteren Argumente von `def` werden beim Aufruf der Funktion
 ausgeführt.
+
+Die Signatur ist eine Liste, keine Anweisung.
+Schon deshalb muss `def` eine Spezial-Form sein.
+Zusätzlich werden die weiteren Argumente gesichert und erst beim Aufruf
+der Funktion ausgeführt.
 
 Yoshi verwendet eine *funktionale Programmiersprache*, die an die
 Programmiersprache LISP angelehnt ist.
@@ -831,10 +922,6 @@ Eine Funktion zu schreiben und einmal aufzurufen, sieht nach zusätzlichem
 Aufwand ohne klaren Nutzen aus.
 Aber sobald die Funktion mehrfach aufgerufen wird, reduziert sich die
 Programmgröße manchmal erheblich.
-
-Eine Funktion ist nicht nur ein Element, um Programme besser zu
-strukturieren, sondern reduziert bei richtiger Anwendung auch deren Größe
-und Komplexität.
 
 Den Aufruf `(poly 5 10)` können wir uns als eine sehr kompakte
 Schreibweise von
@@ -987,6 +1074,86 @@ Nicht immer macht es Sinn, alle diese Schritte im Kopf durchzuführen.
 Aber gerade am Anfang hilft es ungemein, um zu verstehen, wie ein
 Funktionsaufruf funktioniert.
 
+### Abstraktion
+
+Zusätzlich hilft eine Funktion immens bei der Abstraktion:
+Wenn es eine Funktion `poly` gibt, dann können wir sie aufrufen, ohne
+zu verstehen, wie die Funktion programmiert wurde.
+
+Wir machen uns das bereits bei den Funktionen `markiere` und `drehe`
+zu Nutze, ebenso bei den Spezial-Formen `wiederhole` und `def`.
+Wir wissen zwar, was die Anweisungen machen, aber nicht wie sie es
+machen.
+
+Diese Abstraktion ist immens wichtig, sobald die Programme etwas größer
+werden.
+
+Auch können die Funktionen für sich genommen auf Korrektheit geprüft
+werden, bevor sie in größeren Programmen eingesetzt werden.
+
+Kommentare können weiter bei der Abstraktion helfen.
+Alles was in einer Zeile hinter zwei Semikolon `;;` steht, wird
+von Yps ignoriert.
+
+Kommentare sind jedoch ein zweischneidiges Schwert.
+Zum einen erwecken sie den Eindruck, eine schnelle Übersicht über
+die Funktion zu liefern.
+Wenn die Funktion jedoch etwas anderes macht, verwirren sie mehr, als
+dass sie helfen.
+Das passiert hauptsächlich dann, wenn im Verlauf der Programmierung
+eine Funktion verändert wird, aber nicht der dazu gehörende Kommentar.
+
+Betrachten wir etwa:
+
+```lisp
+;; zeichnet ein Polygon
+;; n - Anzahl Seiten
+(def (poly n)
+	(wiederhole n
+		(markiere 15)
+		(drehe (/ 360 n))
+	)
+)
+(poly 5)
+```
+
+Später ändern wir `n` in `num`, vergessen jedoch den Kommentar:
+
+```lisp
+;; zeichnet ein Polygon
+;; n - Anzahl Seiten
+(def (poly \#-seiten)
+	(wiederhole \#-seiten
+		(markiere 15)
+		(drehe (/ 360
+			\#-seiten
+		))
+	)
+)
+(poly 5)
+```
+
+Damit verwirrt der Kommentar mehr, als dass er hilft.
+Oft ist es lästig, den Kommentar immer synchron mit dem Code zu halten.
+Man will nur schnell etwas ausprobieren und bastelt an der Funktion
+herum, bis sie fertig wird.
+Dann will man den Kommentar anpassen.
+
+Aber für die eine Funktion braucht man noch eine andere und schon ist
+der Kommentar vergessen.
+
+Es gibt Leute, die der Meinung sind, dass ein Kommentar ein Signal für
+schlechten Code ist.
+Der Code sollte so geschrieben sein, dass er ohne Kommentar gut
+verstanden wird.
+
+Durch Wahl von sprechenden Namen für Funktionen und Argumente kann
+das erreicht werden.
+
+In einem Buch stört es jedoch, wenn der Code zu lange Namen verwendet.
+Daher verwenden die Beispiele nur sehr kurze Namen.
+Aber die Programme sind auch nicht sehr lang.
+
 ### Geschwindigkeit
 
 Wenn eine Anweisung eine Spezial-Form ist, muss wie im obigen Fall
@@ -1130,13 +1297,13 @@ Betrachten wir das Programm
 
 Insgesamt, kommen folgende Bezeichner vor:
 
-* `def-fn`, `wiederhole` (Spezial-Form),
+* `def`, `wiederhole` (Spezial-Form),
 * `poly`, `markiere`, `drehe` (Funktion),
 * `n` (Argument/Zahl).
 
 Bis auf `n` und `poly` können diese Bezeichner überall verwendet werden.
 
-`poly` kann nur verwendet werden, nachdem die Funktion mit `def-fn`
+`poly` kann nur verwendet werden, nachdem die Funktion mit `def`
 definiert wurde.
 Folgendes Programm macht keinen Sinn:
 
@@ -1172,12 +1339,12 @@ In der sind alle Spezial-Formen und alle globalen Funktionen abgelegt.
 ```gv
 graph {
 	node [shape=box]
-	"def-fn, wiederhole,
+	"def, wiederhole,
 markiere, drehe"
 }
 ```
 
-Wenn mit `def-fn` eine neue Funktion definiert wird, dann wird diese
+Wenn mit `def` eine neue Funktion definiert wird, dann wird diese
 Funktion in die oberste Kiste des Stapels abgelegt.
 
 Um zu einem Bezeichner den entsprechenden Wert oder die passende Funktion
@@ -1185,7 +1352,7 @@ Um zu einem Bezeichner den entsprechenden Wert oder die passende Funktion
 ```gv
 graph {
 	node [shape=box]
-	"def-fn, wiederhole,
+	"def, wiederhole,
 markiere, drehe,
 poly"
 }
@@ -1208,7 +1375,7 @@ digraph {
 	edge [style="invis"]
 	node [shape=box]
 	"irgendwas" ->
-	"def-fn, wiederhole,
+	"def, wiederhole,
 markiere, drehe,
 poly"
 }
@@ -1225,7 +1392,7 @@ digraph {
 	edge [style="invis"]
 	node [shape=box]
 	"n" ->
-	"def-fn, wiederhole,
+	"def, wiederhole,
 markiere, drehe,
 poly"
 }
@@ -1244,7 +1411,7 @@ digraph {
 	edge [style="invis"]
 	node [shape=box]
 	"irgendwas" ->
-	"def-fn, wiederhole,
+	"def, wiederhole,
 markiere, drehe,
 poly"
 }
@@ -1531,42 +1698,6 @@ einmal erfolgen:
 Durch die Abstraktion der Länge in eine eigene Funktion macht es auf
 einmal Sinn, sich mit dem Wert zu befassen und ihn zu optimieren.
 
-## Bedingungen und Listen
-
-Bisher sind die Programme immer einer klaren Schiene gefolgt.
-Es gab keine Abweichungen vom Plan und keine Umwege.
-
-Aber die daraus resultierenden Programme sind nicht sehr mächtig.
-
-```lisp
-(def (log l)
-	(markiere l)
-	(drehe 50)
-	(falls
-		((> (abs (x-koord)) 25))
-		(1 (log (* l 1,2)))
-	)
-)
-(log 5)
-```
-
-```lisp
-(def (id x) x)
-(def (mul-1,2 x) (* x 1,2))
-(def (loop l w up-l up-w)
-	(markiere l)
-	(drehe w)
-	(falls
-		((> (abs (x-koord)) 25))
-		(1 (loop
-			(up-l l) (up-w w)
-			up-l up-w
-		))
-	)
-)
-(loop 5 50 mul-1,2 id)
-```
-
 ## Funktionen als Argumente
 
 Jetzt kommen wir zum Höhepunkt dieses Heftes.
@@ -1671,7 +1802,7 @@ Yoshi Fahrbahnmarkierungen zeichnen kann.
 
 Programme bestehen aus einer Liste von Funktions-Aufrufen.
 
-Ein Funktionsaufruf hat die Form `(operator arg1 arg2 ...)`.
+Ein Funktionsaufruf hat die Form `(name arg1 arg2 ...)`.
 
 ### Argumente
 
@@ -1703,25 +1834,11 @@ Wird kein Argument angegeben, so wird $1$ zurückgegeben.
 Wird nur ein Argument angegeben, so wird der Kehrwert zurückgegeben.
 Wird kein Argument angegeben, so wird $1$ zurückgegeben.
 
-### Bedingungen und Schleifen
+### Schleifen
 
 `(wiederhole n (f))` wiederholt alle Argumente hinter `n`
 $k$-mal. $k$ ist die kleinste ganze Zahl, die nicht kleiner als `n` ist.
 Alle Argumente hinter `n` müssen Funktionsaufrufe sein.
-
-`(falls (c ...)...)` führt den Funktionsaufruf `(t)` aus, wenn die
-Bedingung `c` wahr ist. Ansonsten wird der Funktionsaufruf `(f)`
-ausgeführt, sofern er vorhanden ist.
-
-### Vergleichs-Operatoren
-
-`(< 2 3)` prüft, ob das erste Argument kleiner als das zweite Argument
-ist.
-Die Funktion muss mit zwei Zahlen als Argumenten aufgerufen werden.
-
-`(> 2 3)` prüft, ob das erste Argument größer als das zweite Argument
-ist.
-Die Funktion muss mit zwei Zahlen als Argumenten aufgerufen werden.
 
 ### Funktionen definieren
 

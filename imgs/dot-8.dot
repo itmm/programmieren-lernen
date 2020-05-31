@@ -2,7 +2,7 @@ digraph {
 	edge [style="invis"]
 	node [shape=box]
 	"irgendwas" ->
-	"def-fn, wiederhole,
+	"def, wiederhole,
 markiere, drehe,
 poly"
 }
